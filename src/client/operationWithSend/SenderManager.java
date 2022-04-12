@@ -33,7 +33,8 @@ public class SenderManager {
                     sender.Sender(clear);
                     break;
                 case "history":
-                    //
+                    History history = new History();
+                    sender.Sender(history);
                     break;
                 case "insert":
                     InsertNull insert = new InsertNull();

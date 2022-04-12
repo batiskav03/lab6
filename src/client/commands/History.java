@@ -2,14 +2,19 @@ package client.commands;
 
 import data.Dragon;
 
-import java.io.Serializable;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
 
-abstract public class AbstractCommand implements Serializable {
+public class History extends AbstractCommand{
     private LinkedList<String> historyCollection = new LinkedList<>();
-    public String execute(LinkedHashMap<Integer, Dragon> dragonsCollection) {
-        return "";
+    @Override
+    public String execute(LinkedHashMap<Integer,Dragon> dragonsCollection) {
+        StringBuilder retString = new StringBuilder();
+        LinkedList<String> templist = getHistoryCollection();
+        for (String string : templist) {
+            retString.append(" - ").append(string).append("\n");
+        }
+        return retString.toString();
     }
     public LinkedList<String> getHistoryCollection(){
         return this.historyCollection;

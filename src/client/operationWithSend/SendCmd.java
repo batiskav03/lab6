@@ -1,5 +1,6 @@
 package client.operationWithSend;
 
+import client.Run;
 import client.commands.AbstractCommand;
 
 import java.io.*;
@@ -15,13 +16,14 @@ public class SendCmd {
 
     public SendCmd() {
         try {
-            socket = new Socket("localhost",1337);
+            socket = new Socket("localhost",2289);
             keyboard = new BufferedReader(new InputStreamReader(System.in));
             objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
             inputStream=new DataInputStream(socket.getInputStream());
             outputStream=new DataOutputStream(socket.getOutputStream());
         } catch (IOException e ) {
             e.getMessage();
+            Run.log.warning("IOException in client");
         }
 
 

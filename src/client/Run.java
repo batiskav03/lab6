@@ -13,15 +13,21 @@ import java.util.logging.*;
  */
 
 public class Run {
-
-    public static void main(String[] args) throws IOException, InterruptedException {
+    public static Logger log = Logger.getGlobal();
+    public static void main(String[] args){
         client.tools.Console console = new Console();
-        Handler FileHandler = new FileHandler("log.log");
-        JsonProcessing.log.setUseParentHandlers(false);
-        JsonProcessing.log.addHandler(FileHandler);
-        JsonProcessing.log.info("Program is running.");
+        Handler userFileHandler = null;
+        try {
+            userFileHandler = new FileHandler("UserLogs.log");
+        } catch (IOException e) {
+            Run.log.warning("IOException in client");
+            System.out.println("Logger problems");
+        }
+        log.setUseParentHandlers(false);
+        log.addHandler(userFileHandler);
+        Run.log.info("Program is running.");
         console.interactiveMod();
-        JsonProcessing.log.info("Program successful complete.");
+        Run.log.info("Program successful complete.");
 
 
     }

@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.util.Date;
 
 
-import static Server.ServerCollection.idCounter;
+
 
 
 public class Dragon implements Comparable<Dragon>, Serializable {
