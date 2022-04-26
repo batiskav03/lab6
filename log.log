@@ -2,8 +2,8 @@
 <!DOCTYPE log SYSTEM "logger.dtd">
 <log>
 <record>
-  <date>2022-04-26T03:23:37</date>
-  <millis>1650932617715</millis>
+  <date>2022-04-26T15:23:37</date>
+  <millis>1650975817572</millis>
   <sequence>0</sequence>
   <logger>global</logger>
   <level>INFO</level>
@@ -12,4 +12,3 @@
   <thread>1</thread>
   <message>Program is running.</message>
 </record>
-</log>

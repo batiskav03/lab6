@@ -98,6 +98,7 @@ public class ClientAuthorization {
                 break;
             default:
                 System.out.println("Wrong!");
+                switchCase();
         }
     }
     private static User ClientInfo() {

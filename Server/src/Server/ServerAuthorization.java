@@ -13,7 +13,8 @@ public class ServerAuthorization {
 
     private HashMap<String, String> data;
     private LinkedList<User> userdata;
-    private static String owner;
+    private String owner;
+
 
     public ServerAuthorization() throws IOException {
 
@@ -37,7 +38,7 @@ public class ServerAuthorization {
                 output.writeUTF(check);
                 output.flush();
                 if (check.equals("goodlogin")) {
-                    return;
+                    break;
                 }
 
             }
@@ -70,7 +71,7 @@ public class ServerAuthorization {
         for(Map.Entry<String,String> entry : data.entrySet()) {
             if (entry.getKey().equals(login) || entry.getValue().equals(password)) {
                 System.out.println("Пользователь подключился");
-                owner = login;
+                setOwner(login);
                 return "goodlogin";
             }
 
@@ -78,7 +79,10 @@ public class ServerAuthorization {
         System.out.println("Пользователь безуспешно пытался подключится");
         return "badlogin";
     }
-    public static String OwnerLogin() {
+    public void setOwner(String login) {
+        this.owner = login;
+    }
+    public String getOwner() {
         return owner;
     }
 }

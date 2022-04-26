@@ -12,12 +12,14 @@ public class WorkThread extends Thread{
     private DataOutputStream output;
     private ObjectInputStream input;
     private ServerCollection collection;
+    private String owner;
 
-    public WorkThread(Socket socket,ServerCollection collection,DataOutputStream output,ObjectInputStream input) {
+    public WorkThread(Socket socket,ServerCollection collection,DataOutputStream output,ObjectInputStream input,String owner) {
         this.collection = collection;
         this.client = socket;
         this.output = output;
         this.input = input;
+        this.owner = owner;
     }
     @Override
     public void run() {
@@ -49,6 +51,7 @@ public class WorkThread extends Thread{
             } catch (IOException e) {
                 e.printStackTrace();
             }
+            System.out.println(owner);
             System.out.println("Успешный запрос");
         }
     }
