@@ -9,11 +9,12 @@ import java.util.Scanner;
 import static client.StaticClientSocket.getClientSocket;
 
 public class ClientAuthorization {
+    private static String owner;
     private Scanner scan;
     private Socket socket;
     private static DataOutputStream output;
     private static DataInputStream input;
-    private static User user = new User("","");
+
 
     public ClientAuthorization() throws IOException {
         this.socket = getClientSocket();
@@ -41,6 +42,7 @@ public class ClientAuthorization {
                     break;
                 case "goodlogin":
                     System.out.println("Авторизация прошла успешно");
+
                     return;
                 case "badlogin":
                     System.out.println("Логин или пароль неверны." +
@@ -73,13 +75,13 @@ public class ClientAuthorization {
 
         System.out.println("Введите логин:");
         String login = scan.nextLine();
-        user.setLogin(login);
+        setOwner(login);
         output.writeUTF(login);
         output.flush();
 
         System.out.println("Введите пароль:");
         String password = scan.nextLine();
-        user.setPassword(password);
+
         output.writeUTF(password);
         output.flush();
 
@@ -101,11 +103,12 @@ public class ClientAuthorization {
                 switchCase();
         }
     }
-    private static User ClientInfo() {
-        return user;
-    }
+
     public static String ClientLogin() {
-        return ClientInfo().getLogin();
+        return owner;
+    }
+    public void setOwner(String login){
+        owner = login;
     }
     public static DataOutputStream dataOutput() {
         return output;

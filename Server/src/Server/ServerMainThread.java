@@ -17,35 +17,19 @@ public class ServerMainThread extends Thread{
     }
     @Override
     public void run() {
-        while(true) {
-            Socket client = null;
-            try {
-                client = getServerSocket().accept();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            System.out.println("Подключился новый пользователь ");
-
-            try {
+        try {
+            while (true) {
+                Socket client = getServerSocket().accept();
+                System.out.println("Подключился новый пользователь ");
                 authorization.waiting(client);
                 owner = authorization.getOwner();
-            } catch (IOException | ClassNotFoundException e) {
-                e.printStackTrace();
+                DataOutputStream outputStream = new DataOutputStream(client.getOutputStream());
+                ObjectInputStream objectInputStream = new ObjectInputStream(client.getInputStream());
+                System.out.println(owner);
+                new WorkThread(client, collection, outputStream, objectInputStream, getOwner()).start();
             }
-            DataOutputStream outputStream = null;
-            try {
-                outputStream = new DataOutputStream(client.getOutputStream());
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            ObjectInputStream objectInputStream = null;
-            try {
-                objectInputStream = new ObjectInputStream(client.getInputStream());
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            System.out.println(owner);
-            new WorkThread(client,collection,outputStream,objectInputStream,getOwner()).start();
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
         }
     }
 
@@ -53,3 +37,4 @@ public class ServerMainThread extends Thread{
         return owner;
     }
 }
+

@@ -24,35 +24,21 @@ public class WorkThread extends Thread{
     @Override
     public void run() {
         while (!client.isClosed()) {
-            AbstractCommand command = null;
             try {
+                AbstractCommand command = null;
                 command = (AbstractCommand) input.readObject();
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            if (command.getClass().getName().equals("client.commands.Exit")) {
-                try {
+                if (command.getClass().getName().equals("client.commands.Exit")) {
                     output.writeUTF("Disconnected");
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                collection.whenExit();
-                break;
+                    collection.whenExit();
+                    break;
             }
-            try {
-                output.writeUTF(collection.executeCurrentCommand(command));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            try {
-                output.flush();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            output.writeUTF(collection.executeCurrentCommand(command));
+            output.flush();
             System.out.println(owner);
             System.out.println("Успешный запрос");
+            } catch (IOException | ClassNotFoundException e) {
+                e.printStackTrace();
+            }
         }
     }
 }
