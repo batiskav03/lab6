@@ -15,4 +15,12 @@ public class DragonHead implements Serializable {
     public String toString() {
         return "{eyes = " + eyesCount + ", tooth = " + toothCount + "}";
     }
+
+    public long getEyesCount() {
+        return eyesCount;
+    }
+
+    public float getToothCount() {
+        return toothCount;
+    }
 }

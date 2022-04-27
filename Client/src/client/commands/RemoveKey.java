@@ -5,6 +5,7 @@ import data.Dragon;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import static Server.DatabaseManager.removeDragonByKey;
 import static client.ClientAuthorization.ClientLogin;
 
 public class RemoveKey extends AbstractCommand{
@@ -29,13 +30,14 @@ public class RemoveKey extends AbstractCommand{
                 isT = true;
                 if (entry.getValue().getOwner().equals(getOwnerClient())) {
                     System.out.println("Remove element:");
-                    dragonsCollection.remove(Key);
+                    removeDragonByKey(Key);
                     isYour = true;
                 }
             }
 
         }
         if (isT && isYour) {
+            dragonsCollection.remove(Key);
             return "Элемент успешно удален";
         } else if (isT && !isYour) {
             return "Данный обьект принадлежит другому пользователю";
@@ -46,4 +48,5 @@ public class RemoveKey extends AbstractCommand{
     public String getOwnerClient() {
         return owner;
     }
+
 }

@@ -27,6 +27,7 @@ public class WorkThread extends Thread{
             try {
                 AbstractCommand command = null;
                 command = (AbstractCommand) input.readObject();
+                collection.whenExit();
                 if (command.getClass().getName().equals("client.commands.Exit")) {
                     output.writeUTF("Disconnected");
                     collection.whenExit();

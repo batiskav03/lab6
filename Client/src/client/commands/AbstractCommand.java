@@ -11,6 +11,9 @@ abstract public class AbstractCommand implements Serializable {
     public String execute(LinkedHashMap<Integer, Dragon> dragonsCollection) {
         return "";
     }
+    public boolean executeBD(LinkedHashMap<Integer, Dragon> dragonsCollection) {
+        return true;
+    }
     public void setOwner(String owner) {
         this.owner = owner;
     }

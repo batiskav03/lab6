@@ -12,9 +12,7 @@ public class Dragon implements Comparable<Dragon>, Serializable {
     private Coordinates coordinates; //Поле не может быть null
     private Date creationDate; //Поле не может быть null, Значение этого поля должно генерироваться автоматически
 
-    public Integer getAge() {
-        return age;
-    }
+
     private Integer age; //Значение поля должно быть больше 0, Поле не может быть null
     private Color color; //Поле может быть null
     private DragonType type; //Поле не может быть null
@@ -76,5 +74,33 @@ public class Dragon implements Comparable<Dragon>, Serializable {
 
         return (int) (Math.random() * Integer.MAX_VALUE);
 
+    }
+    public Integer getAge() {
+        return age;
+    }
+    public Float getX() {
+        return coordinates.getY();
+    }
+    public Long getY(){
+        return coordinates.getX();
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getType() {
+        return type.toString();
+    }
+
+    public String getCharacter() {
+        return character.toString();
+    }
+
+    public long getEyes() {
+        return head.getEyesCount();
+    }
+    public float getTooth() {
+        return head.getToothCount();
     }
 }

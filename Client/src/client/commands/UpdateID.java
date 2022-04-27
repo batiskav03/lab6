@@ -1,5 +1,6 @@
 package client.commands;
 
+import Server.DatabaseManager;
 import data.Dragon;
 
 import java.util.LinkedHashMap;
@@ -26,12 +27,18 @@ public class UpdateID extends AbstractCommand {
                 isT = true;
                 if (entry.getValue().getOwner().equals(getOwnerClient())) {
                     System.out.println("Update element:");
-                    dragonsCollection.put(id, a);
+                    boolean statusDB = DatabaseManager.addDragonToDatabase(entry.getKey(),a);
                     isYour = true;
+                    if (statusDB) {
+                        dragonsCollection.put(id, a);
+                    } else {
+                        return "Произошла ошибка в базе данных, попробуйте позже.";
+                    }
+
                 }
             }
-
         }
+
         if (isT && isYour) {
             return "Элемент успешно обновлен";
         } else if (isT && !isYour) {

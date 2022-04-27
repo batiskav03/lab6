@@ -1,5 +1,6 @@
 package client.commands;
 
+import Server.DatabaseManager;
 import data.Dragon;
 
 import java.util.LinkedHashMap;
@@ -18,7 +19,12 @@ public class InsertNull extends AbstractCommand{
     Integer key;
     @Override
     public String execute(LinkedHashMap<Integer, Dragon> dragonsCollection) {
-        dragonsCollection.put(key, a);
+        boolean statusDB = DatabaseManager.addDragonToDatabase(key,a);
+        if (statusDB) {
+            dragonsCollection.put(key, a);
+        } else {
+            return "Произошла ошибка в базе данных, попробуйте позже.";
+        }
         return "Объект успешно добавлен";
     }
 

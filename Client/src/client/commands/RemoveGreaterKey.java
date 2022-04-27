@@ -1,5 +1,6 @@
 package client.commands;
 
+import Server.DatabaseManager;
 import data.Dragon;
 
 import java.util.Iterator;
@@ -25,6 +26,7 @@ public class RemoveGreaterKey extends AbstractCommand{
         while (i.hasNext()) {
             Map.Entry<Integer, Dragon> entry = i.next();
             if(Key < entry.getKey() || !entry.getValue().getOwner().equals(getOwnerClient())) {
+                DatabaseManager.removeDragonByKey(entry.getKey());
                 i.remove();
             }
         }

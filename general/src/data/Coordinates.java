@@ -18,4 +18,10 @@ public class Coordinates implements Serializable {
     public String toString() {
         return "{x = " + x + ", y = " + y + "}";
     }
+    public Long getX(){
+        return this.x;
+    }
+    public Float getY(){
+        return this.y;
+    }
 }
