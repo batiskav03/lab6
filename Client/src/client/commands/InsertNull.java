@@ -18,7 +18,7 @@ public class InsertNull extends AbstractCommand{
 
     Integer key;
     @Override
-    public String execute(LinkedHashMap<Integer, Dragon> dragonsCollection) {
+    public synchronized String execute(LinkedHashMap<Integer, Dragon> dragonsCollection) {
         boolean statusDB = DatabaseManager.addDragonToDatabase(key,a);
         if (statusDB) {
             dragonsCollection.put(key, a);

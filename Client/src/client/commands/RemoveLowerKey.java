@@ -20,7 +20,7 @@ public class RemoveLowerKey extends AbstractCommand{
         this.owner = ClientLogin();
     }
     @Override
-    public String execute(LinkedHashMap<Integer, Dragon> dragonsCollection) {
+    public synchronized String execute(LinkedHashMap<Integer, Dragon> dragonsCollection) {
 
         Iterator<Map.Entry<Integer,Dragon>> i = dragonsCollection.entrySet().iterator();
         while (i.hasNext()) {

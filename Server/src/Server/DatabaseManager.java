@@ -7,11 +7,16 @@ import java.util.HashMap;
 
 public class DatabaseManager {
 
-    public static String PASSWORD = "....";
+    private static String PASSWORD = "****";
+    private static String USER = "***";
+    private static String URL = "jdbc:postgresql://pg:5432/studs";
+
+
     public static boolean addDragonToDatabase(Integer key, Dragon dragon) {
+
         try {
             Class.forName("org.postgresql.Driver");
-            Connection c = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", PASSWORD);
+            Connection c = DriverManager.getConnection(URL, USER, PASSWORD);
             c.setAutoCommit(false);
             System.out.println("-- Opened");
             Statement statement = c.createStatement();
@@ -39,7 +44,7 @@ public class DatabaseManager {
     public static boolean clearDatabase() {
         try {
             Class.forName("org.postgresql.Driver");
-            Connection c = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", PASSWORD);
+            Connection c = DriverManager.getConnection(URL, USER, PASSWORD);
             c.setAutoCommit(false);
             Statement statement = c.createStatement();
             String sql = "TRUNCATE dragons";
@@ -56,7 +61,7 @@ public class DatabaseManager {
     public static boolean removeDragonByKey(Integer key) {
         try {
             Class.forName("org.postgresql.Driver");
-            Connection c = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", PASSWORD);
+            Connection c = DriverManager.getConnection(URL, USER, PASSWORD);
             c.setAutoCommit(false);
             Statement statement = c.createStatement();
             String sql = "DELETE FROM dragons" +
@@ -74,7 +79,7 @@ public class DatabaseManager {
     public static boolean savePasswords(String login, String password) {
         try {
             Class.forName("org.postgresql.Driver");
-            Connection c = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", PASSWORD);
+            Connection c = DriverManager.getConnection(URL, USER, PASSWORD);
             c.setAutoCommit(false);
             Statement statement = c.createStatement();
             String sql = "INSERT INTO users (login,password) VALUES (" + "\'" + login + "\'" + ", " + "\'" + password +
@@ -93,7 +98,7 @@ public class DatabaseManager {
         HashMap<String, String> users1 = new HashMap<>();
         try {
             Class.forName("org.postgresql.Driver");
-            Connection c = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", PASSWORD);
+            Connection c = DriverManager.getConnection(URL, USER, PASSWORD);
             c.setAutoCommit(false);
             PreparedStatement sql = c.prepareStatement("SELECT * FROM users");
             ResultSet rs = sql.executeQuery();

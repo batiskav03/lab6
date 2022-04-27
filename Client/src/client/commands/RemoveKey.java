@@ -21,7 +21,7 @@ public class RemoveKey extends AbstractCommand{
 
 
     @Override
-    public String execute(LinkedHashMap<Integer, Dragon> dragonsCollection) {
+    public synchronized String execute(LinkedHashMap<Integer, Dragon> dragonsCollection) {
 
         boolean isT = false;
         boolean isYour = false;
