@@ -1,17 +1,17 @@
 {
-  "60": {
-    "owner": "1",
-    "id": 465890688,
+  "50": {
+    "owner": "admin",
+    "id": 1822504717,
     "name": "123",
     "coordinates": {
       "x": 123,
       "y": 123.0
     },
-    "creationDate": "Apr 27, 2022 3:38:39 AM",
+    "creationDate": "Apr 27, 2022 6:03:22 AM",
     "age": 123,
     "color": "BLUE",
     "type": "AIR",
-    "character": "EVIL",
+    "character": "WISE",
     "head": {
       "eyesCount": 123,
       "toothCount": 123.0

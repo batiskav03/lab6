@@ -1,25 +1,30 @@
 package Server;
 
-import client.User;
-
-import java.io.*;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.math.BigInteger;
 import java.net.Socket;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.Map;
+
+import static Server.DatabaseManager.getFromDatabase;
 
 public class ServerAuthorization {
 
 
     private HashMap<String, String> data;
-    private LinkedList<User> userdata;
+
     private String owner;
 
 
     public ServerAuthorization() throws IOException {
 
-        this.data = new HashMap<String,String>();
-        this.userdata = new LinkedList<>();
+        this.data = getFromDatabase();
+
 
     }
     public void waiting(Socket socket) throws IOException, ClassNotFoundException {
@@ -53,14 +58,13 @@ public class ServerAuthorization {
         String password = input.readUTF();
         for(Map.Entry<String,String> entry : data.entrySet()) {
             if (entry.getKey().equals(login)) {
-
                 return "badsignup";
             }
 
         }
-        data.put(login,password);
-        userdata.add(new User(login,password));
-        System.out.println(userdata);
+        data.put(login,hashPassword(password));
+        DatabaseManager.savePasswords(login,hashPassword(password));
+        System.out.println(data);
         return "goodsignup";
     }
     public String authorize(Socket socket) throws IOException, ClassNotFoundException {
@@ -69,7 +73,7 @@ public class ServerAuthorization {
         String login = input.readUTF();
         String password = input.readUTF();
         for(Map.Entry<String,String> entry : data.entrySet()) {
-            if (entry.getKey().equals(login) || entry.getValue().equals(password)) {
+            if (entry.getKey().equals(login) || entry.getValue().equals(hashPassword(password))) {
                 System.out.println("Пользователь подключился");
                 setOwner(login);
                 return "goodlogin";
@@ -84,5 +88,21 @@ public class ServerAuthorization {
     }
     public String getOwner() {
         return owner;
+    }
+    public String hashPassword(String password) {
+        try {
+            MessageDigest md = MessageDigest.getInstance("SHA-256");
+            byte[] digest = md.digest(password.getBytes(StandardCharsets.UTF_8));
+            BigInteger hash = new BigInteger(1,digest);
+            String hashPass = hash.toString(16);
+            while (hashPass.length() < 32) {
+                hashPass = "0" + hashPass;
+            }
+            return hashPass;
+
+        } catch (NoSuchAlgorithmException e) {
+            System.out.println("Неверный алгоритм хеширования");;
+        }
+        return null;
     }
 }

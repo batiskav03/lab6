@@ -9,6 +9,7 @@ import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.lang.reflect.Type;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.logging.Logger;
@@ -42,6 +43,12 @@ public class JsonProcessing {
      * @return Связную карту
      */
     static public LinkedHashMap<Integer, Dragon> readFile() throws IOException {
+        Gson gson = new Gson();
+        Type entityType = new TypeToken<LinkedHashMap<Integer, Dragon>>(){}.getType();
+        FileReader read = new FileReader("JSON_FILE.json");
+        return gson.fromJson(read , entityType);
+    }
+    static public HashMap<String, String> readFileU() throws IOException {
         Gson gson = new Gson();
         Type entityType = new TypeToken<LinkedHashMap<Integer, Dragon>>(){}.getType();
         FileReader read = new FileReader("JSON_FILE.json");

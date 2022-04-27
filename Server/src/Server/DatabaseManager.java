@@ -2,24 +2,21 @@ package Server;
 
 import data.Dragon;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
+import java.util.HashMap;
 
 public class DatabaseManager {
-    public static void main(String[] args) {
 
-    }
-    public static boolean addDragonToDatabase(Integer key,Dragon dragon) {
+    public static String PASSWORD = "....";
+    public static boolean addDragonToDatabase(Integer key, Dragon dragon) {
         try {
             Class.forName("org.postgresql.Driver");
-            Connection c = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "))))");
+            Connection c = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", PASSWORD);
             c.setAutoCommit(false);
             System.out.println("-- Opened");
             Statement statement = c.createStatement();
 
-            String sql = "INSERT INTO dragons (key,owner,id,name,x,y,creationDate,age,color,type,character,eyes,tooth) VALUES" + "(" +key + ", " +  "\'" + dragon.getOwner() +"\'" + ", " +dragon.getId() + ", " +
+            String sql = "INSERT INTO dragons (key,owner,id,name,x,y,creationDate,age,color,type,character,eyes,tooth) VALUES" + "(" + key + ", " + "\'" + dragon.getOwner() + "\'" + ", " + dragon.getId() + ", " +
                     "\'" + dragon.getName() + "\'" + ", " + dragon.getX() + ", " + dragon.getY() + ", " + "\'" + dragon.getCreationDate() + "\'" + ", " + dragon.getAge() + ", " +
                     "\'" + dragon.getColor() + "\'" + ", " + "\'" + dragon.getType() + "\'" + ", " + "\'" + dragon.getCharacter() + "\'" + ", " + dragon.getEyes() + ", " + dragon.getTooth() + " );";
             System.out.println(sql);
@@ -38,10 +35,11 @@ public class DatabaseManager {
         }
         return true;
     }
+
     public static boolean clearDatabase() {
         try {
             Class.forName("org.postgresql.Driver");
-            Connection c = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "3361");
+            Connection c = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", PASSWORD);
             c.setAutoCommit(false);
             Statement statement = c.createStatement();
             String sql = "TRUNCATE dragons";
@@ -54,10 +52,11 @@ public class DatabaseManager {
         }
         return true;
     }
+
     public static boolean removeDragonByKey(Integer key) {
         try {
             Class.forName("org.postgresql.Driver");
-            Connection c = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "3361");
+            Connection c = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", PASSWORD);
             c.setAutoCommit(false);
             Statement statement = c.createStatement();
             String sql = "DELETE FROM dragons" +
@@ -71,14 +70,15 @@ public class DatabaseManager {
         }
         return true;
     }
-    public static boolean savePasswords(String login, String password){
+
+    public static boolean savePasswords(String login, String password) {
         try {
             Class.forName("org.postgresql.Driver");
-            Connection c = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "3361");
+            Connection c = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", PASSWORD);
             c.setAutoCommit(false);
             Statement statement = c.createStatement();
-            String sql = "INSERT INTO users (login,password) VALUES (" + "\'" + login + "\'" +", " + "\'" + password +
-                     "\');";
+            String sql = "INSERT INTO users (login,password) VALUES (" + "\'" + login + "\'" + ", " + "\'" + password +
+                    "\');";
             statement.executeUpdate(sql);
             statement.close();
             c.commit();
@@ -88,6 +88,22 @@ public class DatabaseManager {
             return false;
         }
         return true;
+    }
+    public static HashMap<String, String> getFromDatabase(){
+        HashMap<String, String> users1 = new HashMap<>();
+        try {
+            Class.forName("org.postgresql.Driver");
+            Connection c = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", PASSWORD);
+            c.setAutoCommit(false);
+            PreparedStatement sql = c.prepareStatement("SELECT * FROM users");
+            ResultSet rs = sql.executeQuery();
+            while (rs.next()) {
+                users1.put(rs.getString(2), rs.getString(3));
+            }
+        } catch (SQLException | ClassNotFoundException throwables) {
+            throwables.printStackTrace();
+        }
+        return users1;
     }
 
 
