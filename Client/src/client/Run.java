@@ -13,7 +13,7 @@ import java.util.logging.*;
 
 public class Run {
 
-    public static void main(String[] args) throws IOException, InterruptedException {
+    public static void main(String[] args) throws IOException {
         ClientAuthorization client = new ClientAuthorization();
         client.action();
         Console console = new Console();
