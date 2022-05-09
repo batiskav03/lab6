@@ -4,6 +4,13 @@ import Server.JsonProcessing;
 import client.commands.*;
 import data.Color;
 import data.Dragon;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.ButtonBar;
+import javafx.scene.control.MenuButton;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
 
 import java.io.IOException;
 import java.util.Date;
@@ -12,6 +19,80 @@ import java.util.Scanner;
 import static client.ClientAuthorization.ClientLogin;
 
 public class SenderManager {
+    @FXML
+    private Button InsertButton;
+
+    @FXML
+    private Button InsertMaxButton;
+
+    @FXML
+    private AnchorPane anchorRoot;
+
+    @FXML
+    private Button clearButton;
+
+    @FXML
+    private Button exitButton;
+
+    @FXML
+    private Button filterByColorButton;
+
+    @FXML
+    private Button helpButton;
+
+    @FXML
+    private Button infoButton;
+
+    @FXML
+    private StackPane parentContainer;
+
+    @FXML
+    private Button printAScendingButton;
+
+    @FXML
+    private Button removeByGreaterKeyButton;
+
+    @FXML
+    private Button removeByKeyButton;
+
+    @FXML
+    private Button removeByLowerKeyButton;
+
+    @FXML
+    private ButtonBar showButton;
+
+    @FXML
+    private Button updateByIdButton;
+    @FXML
+    private MenuButton ColorMenuButton;
+
+    @FXML
+    private TextField ageField;
+
+    @FXML
+    private MenuButton characterMenuButton;
+
+    @FXML
+    private TextField coordinateXField;
+
+    @FXML
+    private TextField coordinateYField;
+
+    @FXML
+    private Button createObjField;
+
+    @FXML
+    private TextField eyesField;
+
+    @FXML
+    private TextField nameField;
+
+
+    @FXML
+    private TextField teethField;
+
+    @FXML
+    private MenuButton typeMenuButton;
     private Asker asker = new Asker(new Scanner(System.in));
     private SendCmd sender = new SendCmd();
 
@@ -97,4 +178,5 @@ public class SenderManager {
         }
 
     }
+
 }

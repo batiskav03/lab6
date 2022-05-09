@@ -14,8 +14,7 @@ public class SendCmd {
 
     private BufferedReader keyboard;
     private ObjectOutputStream objectOutputStream;
-    private DataInputStream inputStream;
-    private DataOutputStream outputStream;
+
 
 
     public SendCmd() {
@@ -23,8 +22,7 @@ public class SendCmd {
             socket = getClientSocket();
             keyboard = new BufferedReader(new InputStreamReader(System.in));
             objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
-            inputStream=new DataInputStream(socket.getInputStream());
-            outputStream=new DataOutputStream(socket.getOutputStream());
+
         } catch (IOException e ) {
             e.getMessage();
         }

@@ -5,12 +5,14 @@ import java.util.Scanner;
 import static client.ClientAuthorization.ClientLogin;
 
 public class Console {
-
-
     private Scanner keyboard;
     private String userCommand = "";
     private String[] finalCommand;
     private SenderManager sender = new SenderManager();
+
+    public Console() {
+
+    }
 
     public void interactiveMod() {
         keyboard = new Scanner(System.in);

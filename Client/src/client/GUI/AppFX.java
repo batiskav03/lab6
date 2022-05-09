@@ -19,8 +19,7 @@ public class AppFX extends Application {
     public void start(Stage stage) throws IOException {
         InputStream iconStream = getClass().getResourceAsStream("img.png");
         Image image = new Image(iconStream);
-
-        Parent root = FXMLLoader.load(getClass().getResource("AppFx.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../FXML/AppFX.fxml"));
         Scene scene = new Scene(root);
 
         stage.setScene(scene);

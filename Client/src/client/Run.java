@@ -15,7 +15,7 @@ public class Run {
 
     public static void main(String[] args) throws IOException {
         ClientAuthorization client = new ClientAuthorization();
-        client.action();
+
         Console console = new Console();
         Handler FileHandler = new FileHandler("log.log");
         JsonProcessing.log.setUseParentHandlers(false);
