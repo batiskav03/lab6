@@ -105,7 +105,7 @@ public class ClientAuthorization {
         }
     }*/
 
-    public void signUp(String login,String password) {
+    public void signUp(String login, String password) {
         try {
             output.writeUTF("signup");
 
@@ -126,7 +126,7 @@ public class ClientAuthorization {
 
     }
 
-    public void logIn(String login,String password) {
+    public void logIn(String login, String password) {
         try {
             output.writeUTF("login");
             System.out.println("Введите логин:");
@@ -181,60 +181,61 @@ public class ClientAuthorization {
 
 
     @FXML
-    void enterToSystem() {
-        enterToSystem.setOnAction(action -> {
-                    String login = loginField.getText();
-                    String password = passwordField.getText();
-                    if (!login.equals("") && !password.equals("")) {
-                        logIn(login,password);
+    private void enterToSystem() {
+
+        String login = loginField.getText();
+        String password = passwordField.getText();
+        if (!login.equals("") && !password.equals("")) {
+            logIn(login, password);
+        }
+        try {
+            String ans = input.readUTF();
+            switch (ans) {
+                case "goodlogin":
+                    System.out.println("Авторизация прошла успешно");
+                    FXMLLoader loader = new FXMLLoader();
+                    loader.setLocation(getClass().getResource("FXML/InteractiveMod.fxml"));
+                    try {
+                        loader.load();
+                    } catch (IOException e) {
+                        e.printStackTrace();
                     }
-            try {
-                String ans = input.readUTF();
-                switch (ans) {
-                    case "goodlogin":
-                        System.out.println("Авторизация прошла успешно");
-                        FXMLLoader loader = new FXMLLoader();
-                        loader.setLocation(getClass().getResource("FXML/InteractiveMod.fxml"));
-                        try {
-                            loader.load();
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                        Parent root = loader.getRoot();
-                        Scene scene = enterToSystem.getScene();
-                        root.translateYProperty().set(scene.getHeight());
+                    Parent root = loader.getRoot();
+                    Scene scene = enterToSystem.getScene();
+                    root.translateYProperty().set(scene.getHeight());
 
-                        parentContainer.getChildren().add(root);
+                    parentContainer.getChildren().add(root);
 
-                        Timeline timeline = new Timeline();
-                        KeyValue kv = new KeyValue(root.translateYProperty(), 0, Interpolator.EASE_IN);
-                        KeyFrame kf = new KeyFrame(Duration.seconds(1), kv);
-                        timeline.getKeyFrames().add(kf);
-                        timeline.setOnFinished(t -> {
-                            parentContainer.getChildren().remove(anchorRoot);
-                        });
-                        timeline.play();
-                        return;
-                    case "badlogin":
-                        System.out.println("Логин или пароль неверны." +
-                                "\nПопробуйте еще раз.");
-                        Alert alert = new Alert(Alert.AlertType.WARNING, "Логин или пароль неверны." +
-                                "\nПопробуйте еще раз.", ButtonType.OK);
-                        alert.showAndWait();
-                        if (alert.getResult() == ButtonType.OK) {
-                            alert.hide();
-                        }
-                        break;
-                }
-
-            } catch (IOException e) {
-                e.printStackTrace();
+                    Timeline timeline = new Timeline();
+                    KeyValue kv = new KeyValue(root.translateYProperty(), 0, Interpolator.EASE_IN);
+                    KeyFrame kf = new KeyFrame(Duration.seconds(1), kv);
+                    timeline.getKeyFrames().add(kf);
+                    timeline.setOnFinished(t -> {
+                        parentContainer.getChildren().remove(anchorRoot);
+                    });
+                    timeline.play();
+                    return;
+                case "badlogin":
+                    System.out.println("Логин или пароль неверны." +
+                            "\nПопробуйте еще раз.");
+                    Alert alert = new Alert(Alert.AlertType.WARNING, "Логин или пароль неверны." +
+                            "\nПопробуйте еще раз.", ButtonType.OK);
+                    alert.showAndWait();
+                    if (alert.getResult() == ButtonType.OK) {
+                        alert.hide();
+                    }
+                    break;
             }
-                }
-        );
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
     }
+
     @FXML
-    public void loadLogin() {
+    private void loadLogin() {
 
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("FXML/LogInScene.fxml"));
@@ -259,8 +260,9 @@ public class ClientAuthorization {
         timeline.play();
 
     }
+
     @FXML
-    void back() {
+    private void back() {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("FXML/AppFX.fxml"));
         try {
@@ -284,7 +286,8 @@ public class ClientAuthorization {
         timeline.play();
     }
 
-    public void tryToSignup() {
+    @FXML
+    private void tryToSignup() {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("FXML/SignUpScene.fxml"));
         try {
@@ -308,34 +311,35 @@ public class ClientAuthorization {
         timeline.play();
     }
 
-    public void register() {
-        registerButton.setOnAction(action -> {
-                    String login = signupLogin.getText();
-                    String password = signupPassword.getText();
-                    if (!login.equals("") && !password.equals("")) {
-                        signUp(login,password);
+    @FXML
+    private void register() {
+
+        String login = signupLogin.getText();
+        String password = signupPassword.getText();
+        if (!login.equals("") && !password.equals("")) {
+            signUp(login, password);
+        }
+        try {
+            String ans = input.readUTF();
+            switch (ans) {
+                case "badsignup":
+                    System.out.println("Пользователь с данным логином уже существует, попробуйте еще раз");
+                    Alert alert = new Alert(Alert.AlertType.WARNING, "Пользователь с данным логином уже существует, попробуйте еще раз", ButtonType.OK);
+                    alert.showAndWait();
+                    if (alert.getResult() == ButtonType.OK) {
+                        alert.hide();
                     }
-                    try {
-                        String ans = input.readUTF();
-                        switch (ans) {
-                            case "badsignup":
-                                System.out.println("Пользователь с данным логином уже существует, попробуйте еще раз");
-                                Alert alert = new Alert(Alert.AlertType.WARNING, "Пользователь с данным логином уже существует, попробуйте еще раз", ButtonType.OK);
-                                alert.showAndWait();
-                                if (alert.getResult() == ButtonType.OK) {
-                                    alert.hide();
-                                }
-                                break;
-                            case "goodsignup":
-                                System.out.println("Регистрация прошла успешно");
+                    break;
+                case "goodsignup":
+                    System.out.println("Регистрация прошла успешно");
 
-                                break;
-                            }
+                    break;
+            }
 
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                }
-        );
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
     }
 }

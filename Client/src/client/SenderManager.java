@@ -5,20 +5,28 @@ import client.commands.*;
 import data.Color;
 import data.Dragon;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ButtonBar;
-import javafx.scene.control.MenuButton;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 
-import java.io.IOException;
 import java.util.Date;
 import java.util.Scanner;
 
 import static client.ClientAuthorization.ClientLogin;
 
 public class SenderManager {
+    @FXML
+    private MenuItem yellowFilter;
+
+    @FXML
+    private MenuItem blackFilter;
+
+    @FXML
+    private MenuItem blueFilter;
+
+    @FXML
+    private TextArea textArea;
+
     @FXML
     private Button InsertButton;
 
@@ -35,7 +43,7 @@ public class SenderManager {
     private Button exitButton;
 
     @FXML
-    private Button filterByColorButton;
+    private MenuButton filterByColorButton;
 
     @FXML
     private Button helpButton;
@@ -47,7 +55,7 @@ public class SenderManager {
     private StackPane parentContainer;
 
     @FXML
-    private Button printAScendingButton;
+    private Button printAscendingButton;
 
     @FXML
     private Button removeByGreaterKeyButton;
@@ -59,10 +67,11 @@ public class SenderManager {
     private Button removeByLowerKeyButton;
 
     @FXML
-    private ButtonBar showButton;
+    private Button showButton;
 
     @FXML
     private Button updateByIdButton;
+
     @FXML
     private MenuButton ColorMenuButton;
 
@@ -93,8 +102,20 @@ public class SenderManager {
 
     @FXML
     private MenuButton typeMenuButton;
+    private String fullText = "";
     private Asker asker = new Asker(new Scanner(System.in));
     private SendCmd sender = new SendCmd();
+
+    public void printer(AbstractCommand command) {
+        fullText += sender.Sender(command) +
+                "\n-------------------------------------" +
+                "----------------------------------------" +
+                "-----------------------------------------" +
+                "-------------------------------------------" +
+                "--------------------------------------------" +
+                "\n";
+        textArea.setText(fullText);
+    }
 
     public void createAndSend(String[] finalCommand) {
         try {
@@ -120,14 +141,14 @@ public class SenderManager {
                     break;
                 case "insert":
                     InsertNull insert = new InsertNull();
-                    insert.setDragon(new Dragon(ClientLogin(),asker.askName(), asker.askCoordinates(), new Date(), asker.askAge(), asker.askColor(), asker.askDragonType(), asker.askDragonCharacter(), asker.askDragonHead()));
+                    insert.setDragon(new Dragon(ClientLogin(), asker.askName(), asker.askCoordinates(), new Date(), asker.askAge(), asker.askColor(), asker.askDragonType(), asker.askDragonCharacter(), asker.askDragonHead()));
                     insert.setKey(Integer.parseInt(finalCommand[1]));
                     sender.Sender(insert);
                     break;
                 case "update":
                     UpdateID updateid = new UpdateID();
                     updateid.setId(Integer.parseInt(finalCommand[1]));
-                    updateid.setDragon(new Dragon(ClientLogin(),asker.askName(), asker.askCoordinates(), new Date(), asker.askAge(), asker.askColor(), asker.askDragonType(), asker.askDragonCharacter(), asker.askDragonHead()));
+                    updateid.setDragon(new Dragon(ClientLogin(), asker.askName(), asker.askCoordinates(), new Date(), asker.askAge(), asker.askColor(), asker.askDragonType(), asker.askDragonCharacter(), asker.askDragonHead()));
                     sender.Sender(updateid);
                     break;
                 case "remove":
@@ -171,7 +192,7 @@ public class SenderManager {
                 default:
                     System.out.println("Comannd not found. Enter \"help\". ");
             }
-        } catch (ArrayIndexOutOfBoundsException | IOException e) {
+        } catch (ArrayIndexOutOfBoundsException e) {
             JsonProcessing.log.warning("ArrayIndexOutOfBoundsException");
             System.out.println("Need a numeric argument!");
 
@@ -179,4 +200,79 @@ public class SenderManager {
 
     }
 
+    @FXML
+    private void exitButton() {
+        System.exit(228);
+    }
+
+    @FXML
+    private void printAscendingButton() {
+        PrintAscending printAscending = new PrintAscending();
+        printer(printAscending);
+
+    }
+
+
+    @FXML
+    private void removeByKeyButton() {
+
+    }
+
+    @FXML
+    private void removeByLowerKeyButton() {
+    }
+
+    @FXML
+    private void removeByGreaterKeyButton() {
+    }
+
+    @FXML
+    private void updateByIdButton() {
+    }
+
+    @FXML
+    private void InsertButton() {
+    }
+
+    @FXML
+    private void InsertMaxButton() {
+    }
+
+    @FXML
+    private void clearButton() {
+    }
+
+    @FXML
+    private void helpButton() {
+    }
+
+    @FXML
+    private void infoButton() {
+    }
+
+    @FXML
+    private void showButton() {
+    }
+
+    @FXML
+    private void blackFilter() {
+        FilteredByColor filterbycolor = new FilteredByColor();
+        filterbycolor.setColor(Color.valueOf("BLACK"));
+        printer(filterbycolor);
+
+    }
+
+    @FXML
+    private void yellowFilter() {
+        FilteredByColor filterbycolor = new FilteredByColor();
+        filterbycolor.setColor(Color.valueOf("YELLOW"));
+        printer(filterbycolor);
+    }
+
+    @FXML
+    private void blueFilter() {
+        FilteredByColor filterbycolor = new FilteredByColor();
+        filterbycolor.setColor(Color.valueOf("BLUE"));
+        printer(filterbycolor);
+    }
 }

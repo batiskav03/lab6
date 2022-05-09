@@ -29,12 +29,12 @@ public class SendCmd {
 
 
     }
-    public void Sender(AbstractCommand command) throws IOException {
+    public String Sender(AbstractCommand command){
 
         try {
             objectOutputStream.writeObject(command);
             objectOutputStream.flush();
-            System.out.println(dataInput().readUTF());
+            return dataInput().readUTF();
         }
         catch (SocketException ex){
             System.out.println("Сервер отключен");
@@ -42,6 +42,6 @@ public class SendCmd {
         catch (IOException ex){
             System.out.println("Невозможна отправка");
         }
-
+        return "penis";
     }
 }
