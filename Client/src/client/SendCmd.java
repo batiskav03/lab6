@@ -2,15 +2,17 @@ package client;
 
 import client.commands.AbstractCommand;
 
-import java.io.*;
-import java.net.Socket;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.ObjectOutputStream;
 import java.net.SocketException;
 
 import static client.ClientAuthorization.dataInput;
-import static client.StaticClientSocket.getClientSocket;
+import static client.StaticObjOutput.getObjectOutputStream;
 
 public class SendCmd {
-    private Socket socket;
+
 
     private BufferedReader keyboard;
     private ObjectOutputStream objectOutputStream;
@@ -18,16 +20,8 @@ public class SendCmd {
 
 
     public SendCmd() {
-        try {
-            socket = getClientSocket();
-            keyboard = new BufferedReader(new InputStreamReader(System.in));
-            objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
-
-        } catch (IOException e ) {
-            e.getMessage();
-        }
-
-
+        keyboard = new BufferedReader(new InputStreamReader(System.in));
+        objectOutputStream = getObjectOutputStream();
     }
     public String Sender(AbstractCommand command){
 

@@ -25,6 +25,10 @@ import static client.StaticClientSocket.getClientSocket;
 
 public class ClientAuthorization {
     @FXML
+    private TextField keyFiled;
+
+
+    @FXML
     private StackPane parentContainer;
 
     @FXML
@@ -72,38 +76,25 @@ public class ClientAuthorization {
     private static DataInputStream input;
 
 
+
     public ClientAuthorization() throws IOException {
         this.socket = getClientSocket();
         this.scan = new Scanner(System.in);
         output = new DataOutputStream(socket.getOutputStream());
         input = new DataInputStream(socket.getInputStream());
     }
-
-
-/*    public void action() throws IOException {
-        while (true) {
-            String ans = input.readUTF();
-            switch (ans) {
-                case "badsignup":
-                    System.out.println("Пользователь с данным логином уже существует, попробуйте еще раз");
-                    switchCase();
-                    break;
-                case "goodsignup":
-                    System.out.println("Регистрация прошла успешно");
-                    switchCase();
-                    break;
-                case "goodlogin":
-                    System.out.println("Авторизация прошла успешно");
-
-                    return;
-                case "badlogin":
-                    System.out.println("Логин или пароль неверны." +
-                            "\nПопробуйте еще раз.");
-                    switchCase();
-                    break;
-            }
+    public void simpleSwitch(String URL){
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource(URL));
+        try {
+            loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-    }*/
+        Parent root = loader.getRoot();
+        parentContainer.getChildren().add(root);
+        parentContainer.getChildren().remove(anchorRoot);
+    }
 
     public void signUp(String login, String password) {
         try {
@@ -125,7 +116,6 @@ public class ClientAuthorization {
         }
 
     }
-
     public void logIn(String login, String password) {
         try {
             output.writeUTF("login");
@@ -147,21 +137,7 @@ public class ClientAuthorization {
 
     }
 
-/*    public void switchCase() throws IOException {
-        System.out.println("Введите то, что хотите сделать:");
-        String arg = scan.nextLine();
-        switch (arg) {
-            case "log in":
-                logIn();
-                break;
-            case "sign up":
-                signUp();
-                break;
-            default:
-                System.out.println("Wrong!");
-                switchCase();
-        }
-    }*/
+
 
     public static String ClientLogin() {
         return owner;
@@ -179,6 +155,29 @@ public class ClientAuthorization {
         return input;
     }
 
+    public void slide(Button button,String URL) {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource(URL));
+        try {
+            loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Parent root = loader.getRoot();
+        Scene scene = button.getScene();
+        root.translateYProperty().set(scene.getHeight());
+
+        parentContainer.getChildren().add(root);
+
+        Timeline timeline = new Timeline();
+        KeyValue kv = new KeyValue(root.translateYProperty(), 0, Interpolator.EASE_IN);
+        KeyFrame kf = new KeyFrame(Duration.seconds(1), kv);
+        timeline.getKeyFrames().add(kf);
+        timeline.setOnFinished(t -> {
+            parentContainer.getChildren().remove(anchorRoot);
+        });
+        timeline.play();
+    }
 
     @FXML
     private void enterToSystem() {
@@ -193,27 +192,7 @@ public class ClientAuthorization {
             switch (ans) {
                 case "goodlogin":
                     System.out.println("Авторизация прошла успешно");
-                    FXMLLoader loader = new FXMLLoader();
-                    loader.setLocation(getClass().getResource("FXML/InteractiveMod.fxml"));
-                    try {
-                        loader.load();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                    Parent root = loader.getRoot();
-                    Scene scene = enterToSystem.getScene();
-                    root.translateYProperty().set(scene.getHeight());
-
-                    parentContainer.getChildren().add(root);
-
-                    Timeline timeline = new Timeline();
-                    KeyValue kv = new KeyValue(root.translateYProperty(), 0, Interpolator.EASE_IN);
-                    KeyFrame kf = new KeyFrame(Duration.seconds(1), kv);
-                    timeline.getKeyFrames().add(kf);
-                    timeline.setOnFinished(t -> {
-                        parentContainer.getChildren().remove(anchorRoot);
-                    });
-                    timeline.play();
+                    slide(enterToSystem,"FXML/InteractiveMod.fxml");
                     return;
                 case "badlogin":
                     System.out.println("Логин или пароль неверны." +
@@ -236,79 +215,17 @@ public class ClientAuthorization {
 
     @FXML
     private void loadLogin() {
-
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("FXML/LogInScene.fxml"));
-        try {
-            loader.load();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        Parent root = loader.getRoot();
-        Scene scene = loginButton.getScene();
-        root.translateYProperty().set(scene.getHeight());
-
-        parentContainer.getChildren().add(root);
-
-        Timeline timeline = new Timeline();
-        KeyValue kv = new KeyValue(root.translateYProperty(), 0, Interpolator.EASE_IN);
-        KeyFrame kf = new KeyFrame(Duration.seconds(1), kv);
-        timeline.getKeyFrames().add(kf);
-        timeline.setOnFinished(t -> {
-            parentContainer.getChildren().remove(anchorRoot);
-        });
-        timeline.play();
-
+        slide(loginButton,"FXML/LogInScene.fxml");
     }
 
     @FXML
     private void back() {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("FXML/AppFX.fxml"));
-        try {
-            loader.load();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        Parent root = loader.getRoot();
-        Scene scene = backButton.getScene();
-        root.translateYProperty().set(scene.getHeight());
-
-        parentContainer.getChildren().add(root);
-
-        Timeline timeline = new Timeline();
-        KeyValue kv = new KeyValue(root.translateYProperty(), 0, Interpolator.EASE_IN);
-        KeyFrame kf = new KeyFrame(Duration.seconds(1), kv);
-        timeline.getKeyFrames().add(kf);
-        timeline.setOnFinished(t -> {
-            parentContainer.getChildren().remove(anchorRoot);
-        });
-        timeline.play();
+        slide(backButton,"FXML/AppFX.fxml");
     }
 
     @FXML
     private void tryToSignup() {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("FXML/SignUpScene.fxml"));
-        try {
-            loader.load();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        Parent root = loader.getRoot();
-        Scene scene = signupButton.getScene();
-        root.translateYProperty().set(scene.getHeight());
-
-        parentContainer.getChildren().add(root);
-
-        Timeline timeline = new Timeline();
-        KeyValue kv = new KeyValue(root.translateYProperty(), 0, Interpolator.EASE_IN);
-        KeyFrame kf = new KeyFrame(Duration.seconds(1), kv);
-        timeline.getKeyFrames().add(kf);
-        timeline.setOnFinished(t -> {
-            parentContainer.getChildren().remove(anchorRoot);
-        });
-        timeline.play();
+        slide(signupButton,"FXML/SignUpScene.fxml");
     }
 
     @FXML
@@ -324,18 +241,22 @@ public class ClientAuthorization {
             switch (ans) {
                 case "badsignup":
                     System.out.println("Пользователь с данным логином уже существует, попробуйте еще раз");
-                    Alert alert = new Alert(Alert.AlertType.WARNING, "Пользователь с данным логином уже существует, попробуйте еще раз", ButtonType.OK);
-                    alert.showAndWait();
-                    if (alert.getResult() == ButtonType.OK) {
-                        alert.hide();
+                    Alert wrong = new Alert(Alert.AlertType.WARNING, "Пользователь с данным логином уже существует, попробуйте еще раз", ButtonType.OK);
+                    wrong.showAndWait();
+                    if (wrong.getResult() == ButtonType.OK) {
+                        wrong.hide();
                     }
                     break;
                 case "goodsignup":
                     System.out.println("Регистрация прошла успешно");
-
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION, "Регестрация успешно произведена!", ButtonType.OK);
+                    alert.showAndWait();
+                    if (alert.getResult() == ButtonType.OK) {
+                        alert.hide();
+                        slide(registerButton,"FXML/LogInScene.fxml");
+                    }
                     break;
             }
-
         } catch (IOException e) {
             e.printStackTrace();
         }
