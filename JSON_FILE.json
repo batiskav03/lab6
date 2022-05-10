@@ -1,1 +1,20 @@
-{}
+{
+  "123": {
+    "owner": "1",
+    "id": 1646889798,
+    "name": "60chlen",
+    "coordinates": {
+      "x": 123,
+      "y": 123.0
+    },
+    "creationDate": "May 11, 2022 12:46:37 AM",
+    "age": 123,
+    "color": "BLACK",
+    "type": "UNDERGROUND",
+    "character": "EVIL",
+    "head": {
+      "eyesCount": 123,
+      "toothCount": 123.0
+    }
+  }
+}

@@ -7,9 +7,9 @@ import java.util.HashMap;
 
 public class DatabaseManager {
 
-    private static String PASSWORD = "knz865";
-    private static String USER = "s338956";
-    private static String URL = "jdbc:postgresql://pg:5432/studs";
+    private static String PASSWORD = "3361";
+    private static String USER = "postgres";
+    private static String URL = "jdbc:postgresql://localhost:5432/postgres";
 
 
     public static boolean addDragonToDatabase(Integer key, Dragon dragon) {

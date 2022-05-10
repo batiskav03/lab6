@@ -25,7 +25,7 @@
                 </font>
             </TextField>
             <Button fx:id="enterKey" layoutX="898.0" layoutY="962.0" mnemonicParsing="false"
-                    onAction="#enterKeyRemoveByKey" prefHeight="47.0" prefWidth="100.0" text="Enter">
+                    onAction="#enterKeyRemoveByGRKey" prefHeight="47.0" prefWidth="100.0" text="Enter">
                 <font>
                     <Font name="Segoe UI Black" size="18.0"/>
                 </font>

@@ -18,42 +18,6 @@
         <Group>
             <VBox />
         </Group>
-<<<<<<< HEAD
-        <Button fx:id="signupButton" layoutX="822.0" layoutY="565.0" mnemonicParsing="false" onAction="#tryToSignup" prefHeight="94.0" prefWidth="274.0" style="-fx-background-color: #B38867; -fx-background-radius: 350;" text="Sign Up" textFill="#eed8c9">
-            <font>
-                <Font name="Segoe UI Black" size="42.0" />
-            </font></Button>
-        <Button fx:id="loginButton" layoutX="823.0" layoutY="717.0" mnemonicParsing="false" onAction="#loadLogin" prefHeight="89.0" prefWidth="274.0" style="-fx-background-color: #B38867; -fx-background-radius: 350;" text="Log In" textFill="#eed8c9">
-            <font>
-                <Font name="Segoe UI Black" size="42.0" />
-            </font></Button>
-        <Label layoutX="644.0" layoutY="315.0" textFill="#42313a">
-            <font>
-                <Font name="Segoe UI Black" size="41.0" />
-            </font>
-        </Label>
-        <Label layoutX="582.0" layoutY="333.0" text="Please, authorize in our System:" textFill="#42313a">
-            <font>
-                <Font name="Segoe UI Black" size="48.0" />
-            </font>
-        </Label>
-        <Label layoutX="691.0" layoutY="169.0" text="HELLO, USER!" textFill="#42313a">
-            <font>
-                <Font name="Segoe UI Black" size="80.0" />
-            </font>
-        </Label>
-        <ImageView fitHeight="223.0" fitWidth="236.0" layoutX="1683.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@../GUI/Data/93533501-53aa0d80-f943-11ea-90d1-e6e70eca2e29.gif" />
-            </image>
-        </ImageView>
-        <ImageView fitHeight="656.0" fitWidth="626.0" layoutX="18.0" layoutY="424.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@../GUI/Data/ZAc2.gif" />
-            </image>
-        </ImageView>
-        <Button fx:id="themeButton" layoutX="1738.0" layoutY="73.0" mnemonicParsing="false" onAction="#switchToAppDark" opacity="0.0" prefHeight="103.0" prefWidth="114.0" style="-fx-background-radius: 12323;" />
-=======
           <Button fx:id="signupButton" layoutX="822.0" layoutY="565.0" mnemonicParsing="false" onAction="#tryToSignup" prefHeight="94.0" prefWidth="274.0" style="-fx-background-color: #B38867; -fx-background-radius: 350;" text="Sign Up" textFill="#eed8c9">
          <font>
             <Font name="Segoe UI Black" size="42.0" />
@@ -88,13 +52,8 @@
          </image>
       </ImageView>
       <Button fx:id="themeButton" layoutX="1738.0" layoutY="73.0" mnemonicParsing="false" onAction="#switchToAppDark" opacity="0.0" prefHeight="103.0" prefWidth="114.0" style="-fx-background-radius: 12323;" />
->>>>>>> origin/lab8GUItest
         <cursor>
             <Cursor fx:constant="DEFAULT" />
         </cursor>
     </AnchorPane>
-<<<<<<< HEAD
 </StackPane>
-=======
-</StackPane>
->>>>>>> origin/lab8GUItest

@@ -92,11 +92,11 @@
                     <Font name="Segoe UI Black" size="41.0" />
                 </font>
             </Label>
-            <MenuButton fx:id="ColorMenuButton" layoutX="1211.0" layoutY="118.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="607.0" style="-fx-background-color: #B38867; -fx-background-radius: 20;" text="Choose color">
+            <MenuButton fx:id="ColorMenuButton" layoutX="1211.0" layoutY="118.0" mnemonicParsing="false" onAction="#ColorMenuButton" prefHeight="51.0" prefWidth="607.0" style="-fx-background-color: #B38867; -fx-background-radius: 20;" text="Choose color">
                 <items>
-                    <MenuItem mnemonicParsing="false" text="Yellow" />
-                    <MenuItem mnemonicParsing="false" text="Black" />
-                    <MenuItem mnemonicParsing="false" text="Blue" />
+                    <MenuItem fx:id="yellowDragon" mnemonicParsing="false" onAction="#yellowDragon" text="Yellow" />
+                    <MenuItem fx:id="blackDragon" mnemonicParsing="false" onAction="#blackDragon" text="Black" />
+                    <MenuItem fx:id="blueDragon" mnemonicParsing="false" onAction="#blueDragon" text="Blue" />
                 </items>
                 <font>
                     <Font name="Segoe UI Italic" size="27.0" />
@@ -107,49 +107,38 @@
                     <Font name="Segoe UI Bold" size="34.0" />
                 </font>
             </Label>
-            <MenuButton fx:id="typeMenuButton" layoutX="1211.0" layoutY="256.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="607.0" style="-fx-background-color: #B38867; -fx-background-radius: 20;" text="Choose type">
+            <MenuButton fx:id="typeMenuButton" layoutX="1211.0" layoutY="256.0" mnemonicParsing="false" onAction="#typeMenuButton" prefHeight="51.0" prefWidth="607.0" style="-fx-background-color: #B38867; -fx-background-radius: 20;" text="Choose type">
                 <items>
-                    <MenuItem mnemonicParsing="false" text="Water" />
-                    <MenuItem mnemonicParsing="false" text="Underground" />
-                    <MenuItem mnemonicParsing="false" text="Air" />
-                    <MenuItem mnemonicParsing="false" text="Fire" />
+                    <MenuItem fx:id="waterDragon" mnemonicParsing="false" onAction="#waterDragon" text="Water" />
+                    <MenuItem fx:id="undergroundDragon" mnemonicParsing="false" onAction="#undergroundDragon" text="Underground" />
+                    <MenuItem fx:id="airDragon" mnemonicParsing="false" onAction="#airDragon" text="Air" />
+                    <MenuItem fx:id="fireDragon" mnemonicParsing="false" onAction="#fireDragon" text="Fire" />
                 </items>
                 <font>
                     <Font name="Segoe UI Italic" size="27.0" />
                 </font>
             </MenuButton>
-            <MenuButton fx:id="characterMenuButton" layoutX="1208.0" layoutY="384.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="607.0" style="-fx-background-color: #B38867; -fx-background-radius: 20;" text="Choose character">
+            <MenuButton fx:id="characterMenuButton" layoutX="1208.0" layoutY="384.0" mnemonicParsing="false" onAction="#characterMenuButton" prefHeight="51.0" prefWidth="607.0" style="-fx-background-color: #B38867; -fx-background-radius: 20;" text="Choose character">
                 <items>
-                    <MenuItem mnemonicParsing="false" text="Wise" />
-                    <MenuItem mnemonicParsing="false" text="Evil" />
-                    <MenuItem mnemonicParsing="false" text="Good" />
+                    <MenuItem fx:id="wiseDragon" mnemonicParsing="false" onAction="#wiseDragon" text="Wise" />
+                    <MenuItem fx:id="evilDragon" mnemonicParsing="false" onAction="#evilDragon" text="Evil" />
+                    <MenuItem fx:id="goodDragon" mnemonicParsing="false" onAction="#goodDragon" text="Good" />
                 </items>
                 <font>
                     <Font name="Segoe UI Italic" size="27.0" />
                 </font>
             </MenuButton>
-<<<<<<< HEAD
             <Label layoutX="57.0" layoutY="39.0" prefHeight="98.0" prefWidth="1059.0" text="NEW DRAGON  CREATING" textFill="#42313a">
                 <font>
                     <Font name="Century Gothic Bold" size="72.0" />
                 </font>
             </Label>
-=======
-         <Label layoutX="57.0" layoutY="39.0" prefHeight="98.0" prefWidth="1059.0" text="NEW DRAGON  CREATING" textFill="#42313a">
-            <font>
-               <Font name="Century Gothic Bold" size="72.0" />
-            </font>
-         </Label>
->>>>>>> origin/lab8GUItest
-            <Button fx:id="createObjField" layoutX="663.0" layoutY="878.0" mnemonicParsing="false" prefHeight="130.0" prefWidth="540.0" style="-fx-background-color: #7E675E; -fx-background-radius: 40;" text="Submit" textFill="#eed8c9">
+            <Button fx:id="createObjField" layoutX="663.0" layoutY="878.0" mnemonicParsing="false" onAction="#createObjField" prefHeight="130.0" prefWidth="540.0" style="-fx-background-color: #7E675E; -fx-background-radius: 40;" text="Submit" textFill="#eed8c9">
                 <font>
                     <Font name="Segoe UI Black" size="62.0" />
                 </font>
             </Button>
+         <TextField fx:id="idkey" layoutX="820.0" layoutY="340.0" onAction="#idkey" prefHeight="189.0" prefWidth="270.0" />
         </children>
     </AnchorPane>
-<<<<<<< HEAD
 </StackPane>
-=======
-</StackPane>
->>>>>>> origin/lab8GUItest

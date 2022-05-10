@@ -133,12 +133,12 @@
                     <Font name="Century Gothic Bold" size="72.0" />
                 </font>
             </Label>
-            <Button fx:id="createObjField" layoutX="663.0" layoutY="878.0" mnemonicParsing="false" onAction="#createObjField" prefHeight="130.0" prefWidth="540.0" style="-fx-background-color: #7E675E; -fx-background-radius: 40;" text="Submit" textFill="#eed8c9">
+            <Button fx:id="createNewObjField" layoutX="663.0" layoutY="878.0" mnemonicParsing="false" onAction="#createNewObjField" prefHeight="130.0" prefWidth="540.0" style="-fx-background-color: #7E675E; -fx-background-radius: 40;" text="Submit" textFill="#eed8c9">
                 <font>
                     <Font name="Segoe UI Black" size="62.0" />
                 </font>
             </Button>
-         <TextField fx:id="idkey" layoutX="820.0" layoutY="340.0" onAction="#idkey" prefHeight="189.0" prefWidth="270.0" />
+            <TextField fx:id="idkey" layoutX="820.0" layoutY="340.0" onAction="#idkey" prefHeight="189.0" prefWidth="270.0" />
         </children>
     </AnchorPane>
 </StackPane>

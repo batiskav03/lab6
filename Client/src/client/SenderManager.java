@@ -1,11 +1,7 @@
 package client;
 
-import client.commands.AbstractCommand;
-import client.commands.FilteredByColor;
-import client.commands.PrintAscending;
-import client.commands.RemoveKey;
-import data.Color;
-import data.Dragon;
+import client.commands.*;
+import data.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,7 +11,10 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.Scanner;
+
+import static client.ClientAuthorization.ClientLogin;
 
 public class SenderManager {
 
@@ -160,23 +159,6 @@ public class SenderManager {
     }
 
 
-    @FXML
-    private void exitButton() {
-        System.exit(228);
-    }
-
-    @FXML
-    private void printAscendingButton() {
-        PrintAscending printAscending = new PrintAscending();
-        printer(printAscending);
-
-    }
-
-
-    @FXML
-    private void removeByKeyButton() {
-        simpleSwitch("FXML/InteractiveModWithoutButtonsRemoveByKey.fxml");
-    }
     public void simpleSwitch(String URL){
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource(URL));
@@ -191,49 +173,10 @@ public class SenderManager {
     }
 
     @FXML
-    private void removeByLowerKeyButton() {
-
-    }
-
-    @FXML
-    private void removeByGreaterKeyButton() {
-    }
-
-    @FXML
-    private void updateByIdButton() {
-
-    }
-
-    @FXML
-    private void InsertButton() {
-    }
-
-    @FXML
-    private void InsertMaxButton() {
-    }
-
-    @FXML
-    private void clearButton() {
-    }
-
-    @FXML
-    private void helpButton() {
-    }
-
-    @FXML
-    private void infoButton() {
-    }
-
-    @FXML
-    private void showButton() {
-    }
-
-    @FXML
     private void blackFilter() {
         FilteredByColor filterbycolor = new FilteredByColor();
         filterbycolor.setColor(Color.valueOf("BLACK"));
         printer(filterbycolor);
-
     }
 
     @FXML
@@ -255,8 +198,11 @@ public class SenderManager {
         Integer key = Integer.valueOf(keyFiled.getText());
         RemoveKey remove = new RemoveKey();
         remove.setKey(key);
+        String ans = sender.Sender(remove);
+        Alert info = new Alert(Alert.AlertType.INFORMATION, ans, ButtonType.OK);
+        info.showAndWait();
         simpleSwitch("FXML/InteractiveMod.fxml");
-        printer(remove);
+
 
     }
     @FXML
@@ -266,14 +212,16 @@ public class SenderManager {
     }
     @FXML
     private void createObjField(){
-//        UpdateID updateid = new UpdateID();
-//        updateid.setId(Integer.parseInt(idkey.getText()));
-//        updateid.setDragon(new Dragon(ClientLogin(), nameField.getText(),
-//                new Coordinates(Long.parseLong(coordinateXField.getText()),Float.parseFloat(coordinateYField.getText())),
-//                new Date(), Integer.valueOf(ageField.getText()), Color.valueOf(ColorMenuButton.getText()),
-//                asker.askDragonType(), asker.askDragonCharacter(), new DragonHead(Long.parseLong(teethField.getText()),Float.parseFloat(eyesField.getText()))));
-//        sender.Sender(updateid);
-//        simpleSwitch("FXML/InteractiveMod.fxml");
+        UpdateID updateid = new UpdateID();
+        updateid.setId(Integer.parseInt(idkey.getText()));
+        updateid.setDragon(new Dragon(ClientLogin(), nameField.getText(),
+                new Coordinates(Long.parseLong(coordinateXField.getText()),Float.parseFloat(coordinateYField.getText())),
+                new Date(), Integer.valueOf(ageField.getText()), Color.valueOf(ColorMenuButton.getText()),
+                DragonType.valueOf(typeMenuButton.getText()), DragonCharacter.valueOf(characterMenuButton.getText()), new DragonHead(Long.parseLong(teethField.getText()),Float.parseFloat(eyesField.getText()))));
+        String ans = sender.Sender(updateid);
+        Alert info = new Alert(Alert.AlertType.INFORMATION, ans, ButtonType.OK);
+        info.show();
+        simpleSwitch("FXML/InteractiveMod.fxml");
     }
     @FXML
     private void ColorMenuButton(){
@@ -342,22 +290,73 @@ public class SenderManager {
         } else if (exitButton.equals(source)) {
             System.exit(228);
         } else if (showButton.equals(source)) {
-        } else if (filterByColorButton.equals(source)) {
+            Show show = new Show();
+            printer(show);
         } else if (helpButton.equals(source)) {
+            Help help = new Help();
+            printer(help);
         } else if (infoButton.equals(source)) {
+            Info info = new Info();
+            printer(info);
         } else if (updateByIdButton.equals(source)) {
+            simpleSwitch("FXML/UpdInsert.fxml");
         } else if (InsertButton.equals(source)) {
+            simpleSwitch("FXML/newDragon.fxml");
         } else if (InsertMaxButton.equals(source)) {
+            MaxByCreationDate maxbydate = new MaxByCreationDate();
+            printer(maxbydate);
         } else if (clearButton.equals(source)) {
+            Clear clear = new Clear();
+            printer(clear);
         } else if (removeByKeyButton.equals(source)) {
             simpleSwitch("FXML/InteractiveModWithoutButtonsRemoveByKey.fxml");
-
         } else if (removeByLowerKeyButton.equals(source)) {
+            simpleSwitch("FXML/InteractiveModWithoutButtonsRemoveByLWKey.fxml");
         } else if (removeByGreaterKeyButton.equals(source)) {
+            simpleSwitch("FXML/InteractiveModWithoutButtonsRemoveByGRKey.fxml");
         } else {
             throw new IllegalStateException("Unexpected value: " + actionEvent.getSource());
         }
 
 
+    }
+
+    public void typeMenuButton() {
+    }
+
+    public void characterMenuButton(ActionEvent actionEvent) {
+    }
+
+    public void createNewObjField(ActionEvent actionEvent) {
+        InsertNull insert = new InsertNull();
+        insert.setKey(Integer.parseInt(idkey.getText()));
+        insert.setDragon(new Dragon(ClientLogin(), nameField.getText(),
+                new Coordinates(Long.parseLong(coordinateXField.getText()),Float.parseFloat(coordinateYField.getText())),
+                new Date(), Integer.valueOf(ageField.getText()), Color.valueOf(ColorMenuButton.getText()),
+                DragonType.valueOf(typeMenuButton.getText()), DragonCharacter.valueOf(characterMenuButton.getText()), new DragonHead(Long.parseLong(teethField.getText()),Float.parseFloat(eyesField.getText()))));
+        String ans = sender.Sender(insert);
+        Alert info = new Alert(Alert.AlertType.INFORMATION, ans, ButtonType.OK);
+        info.show();
+        simpleSwitch("FXML/InteractiveMod.fxml");
+    }
+
+    public void enterKeyRemoveByGRKey() {
+        Integer key = Integer.valueOf(keyFiled.getText());
+        RemoveGreaterKey remove = new RemoveGreaterKey();
+        remove.setKey(key);
+        String ans = sender.Sender(remove);
+        Alert info = new Alert(Alert.AlertType.INFORMATION, ans, ButtonType.OK);
+        info.showAndWait();
+        simpleSwitch("FXML/InteractiveMod.fxml");
+    }
+
+    public void enterKeyRemoveByLWKey() {
+        Integer key = Integer.valueOf(keyFiled.getText());
+        RemoveLowerKey remove = new RemoveLowerKey();
+        remove.setKey(key);
+        String ans = sender.Sender(remove);
+        Alert info = new Alert(Alert.AlertType.INFORMATION, ans, ButtonType.OK);
+        info.showAndWait();
+        simpleSwitch("FXML/InteractiveMod.fxml");
     }
 }
