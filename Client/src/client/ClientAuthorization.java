@@ -24,9 +24,12 @@ import java.util.Scanner;
 import static client.StaticClientSocket.getClientSocket;
 
 public class ClientAuthorization {
+
+    @FXML
+    public Button themeButton;
+
     @FXML
     private TextField keyFiled;
-
 
     @FXML
     private StackPane parentContainer;
@@ -214,8 +217,47 @@ public class ClientAuthorization {
     }
 
     @FXML
+    private void enterToSystemDark() {
+
+        String login = loginField.getText();
+        String password = passwordField.getText();
+        if (!login.equals("") && !password.equals("")) {
+            logIn(login, password);
+        }
+        try {
+            String ans = input.readUTF();
+            switch (ans) {
+                case "goodlogin":
+                    System.out.println("Авторизация прошла успешно");
+                    slide(enterToSystem,"FXML_Dark/InteractiveMod_dark.fxml");
+                    return;
+                case "badlogin":
+                    System.out.println("Логин или пароль неверны." +
+                            "\nПопробуйте еще раз.");
+                    Alert alert = new Alert(Alert.AlertType.WARNING, "Логин или пароль неверны." +
+                            "\nПопробуйте еще раз.", ButtonType.OK);
+                    alert.showAndWait();
+                    if (alert.getResult() == ButtonType.OK) {
+                        alert.hide();
+                    }
+                    break;
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+    }
+
+    @FXML
     private void loadLogin() {
         slide(loginButton,"FXML/LogInScene.fxml");
+    }
+
+    @FXML
+    private void loadLoginDark() {
+        slide(loginButton,"FXML_Dark/LogInScene_dark.fxml");
     }
 
     @FXML
@@ -224,8 +266,18 @@ public class ClientAuthorization {
     }
 
     @FXML
+    private void backDark() {
+        slide(backButton,"FXML_Dark/AppFX_dark.fxml");
+    }
+
+    @FXML
     private void tryToSignup() {
         slide(signupButton,"FXML/SignUpScene.fxml");
+    }
+
+    @FXML
+    private void tryToSignupDark() {
+        slide(signupButton,"FXML_Dark/SignUpScene_dark.fxml");
     }
 
     @FXML
@@ -262,5 +314,46 @@ public class ClientAuthorization {
         }
 
 
+    }
+
+    @FXML
+    private void registerDark() {
+
+        String login = signupLogin.getText();
+        String password = signupPassword.getText();
+        if (!login.equals("") && !password.equals("")) {
+            signUp(login, password);
+        }
+        try {
+            String ans = input.readUTF();
+            switch (ans) {
+                case "badsignup":
+                    System.out.println("Пользователь с данным логином уже существует, попробуйте еще раз");
+                    Alert wrong = new Alert(Alert.AlertType.WARNING, "Пользователь с данным логином уже существует, попробуйте еще раз", ButtonType.OK);
+                    wrong.showAndWait();
+                    if (wrong.getResult() == ButtonType.OK) {
+                        wrong.hide();
+                    }
+                    break;
+                case "goodsignup":
+                    System.out.println("Регистрация прошла успешно");
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION, "Регестрация успешно произведена!", ButtonType.OK);
+                    alert.showAndWait();
+                    if (alert.getResult() == ButtonType.OK) {
+                        alert.hide();
+                        slide(registerButton,"FXML_Dark/LogInScene_dark.fxml");
+                    }
+                    break;
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+    }
+
+    @FXML
+    private void switchToAppDark() {
+        slide(themeButton,"FXML_Dark/AppFX_dark.fxml");
     }
 }

@@ -34,6 +34,7 @@
                 <Font name="Segoe UI Black" size="48.0" />
             </font>
         </Button>
+<<<<<<< HEAD
         <Button id="backButton" fx:id="backButton" layoutX="60.0" layoutY="40.0" mnemonicParsing="false" onAction="#back" prefHeight="70.0" prefWidth="154.0" style="-fx-background-color: #B38867; -fx-background-radius: 35;" text="back" textFill="#fff3dc">
             <font>
                 <Font name="Segoe UI Black" size="24.0" />
@@ -44,8 +45,24 @@
                 <Font name="Segoe UI Black Italic" size="85.0" />
             </font>
         </Label>
+=======
+      <Button id="backButton" fx:id="backButton" layoutX="60.0" layoutY="40.0" mnemonicParsing="false" onAction="#back" prefHeight="70.0" prefWidth="154.0" style="-fx-background-color: #B38867; -fx-background-radius: 35;" text="back" textFill="#fff3dc">
+         <font>
+            <Font name="Segoe UI Black" size="24.0" />
+         </font>
+      </Button>
+      <Label layoutX="615.0" layoutY="183.0" prefHeight="124.0" prefWidth="519.0" text="Registration" textFill="#7e675e">
+         <font>
+            <Font name="Segoe UI Black Italic" size="85.0" />
+         </font>
+      </Label>
+>>>>>>> origin/lab8GUItest
         <cursor>
             <Cursor fx:constant="DEFAULT" />
         </cursor>
     </AnchorPane>
+<<<<<<< HEAD
 </StackPane>
+=======
+</StackPane>
+>>>>>>> origin/lab8GUItest

@@ -119,4 +119,8 @@
                       style="-fx-border-color: #000000; -fx-border-width: 15; -fx-border-radius: 15; -fx-background-radius: 25;"/>
         </children>
     </AnchorPane>
+<<<<<<< HEAD
 </StackPane>
+=======
+</StackPane>
+>>>>>>> origin/lab8GUItest
