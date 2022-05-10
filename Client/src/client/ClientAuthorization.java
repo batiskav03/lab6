@@ -4,6 +4,7 @@ import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -24,6 +25,9 @@ import java.util.Scanner;
 import static client.StaticClientSocket.getClientSocket;
 
 public class ClientAuthorization {
+    @FXML
+    private Button themeButton;
+
     @FXML
     private StackPane parentContainer;
 
@@ -235,10 +239,91 @@ public class ClientAuthorization {
     }
 
     @FXML
+    private void enterToSystemDark() {
+
+        String login = loginField.getText();
+        String password = passwordField.getText();
+        if (!login.equals("") && !password.equals("")) {
+            logIn(login, password);
+        }
+        try {
+            String ans = input.readUTF();
+            switch (ans) {
+                case "goodlogin":
+                    System.out.println("Авторизация прошла успешно");
+                    FXMLLoader loader = new FXMLLoader();
+                    loader.setLocation(getClass().getResource("FXML_Dark/InteractiveMod_dark.fxml"));
+                    try {
+                        loader.load();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    Parent root = loader.getRoot();
+                    Scene scene = enterToSystem.getScene();
+                    root.translateYProperty().set(scene.getHeight());
+
+                    parentContainer.getChildren().add(root);
+
+                    Timeline timeline = new Timeline();
+                    KeyValue kv = new KeyValue(root.translateYProperty(), 0, Interpolator.EASE_IN);
+                    KeyFrame kf = new KeyFrame(Duration.seconds(1), kv);
+                    timeline.getKeyFrames().add(kf);
+                    timeline.setOnFinished(t -> {
+                        parentContainer.getChildren().remove(anchorRoot);
+                    });
+                    timeline.play();
+                    return;
+                case "badlogin":
+                    System.out.println("Логин или пароль неверны." +
+                            "\nПопробуйте еще раз.");
+                    Alert alert = new Alert(Alert.AlertType.WARNING, "Логин или пароль неверны." +
+                            "\nПопробуйте еще раз.", ButtonType.OK);
+                    alert.showAndWait();
+                    if (alert.getResult() == ButtonType.OK) {
+                        alert.hide();
+                    }
+                    break;
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+    }
+
+    @FXML
     private void loadLogin() {
 
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("FXML/LogInScene.fxml"));
+        try {
+            loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Parent root = loader.getRoot();
+        Scene scene = loginButton.getScene();
+        root.translateYProperty().set(scene.getHeight());
+
+        parentContainer.getChildren().add(root);
+
+        Timeline timeline = new Timeline();
+        KeyValue kv = new KeyValue(root.translateYProperty(), 0, Interpolator.EASE_IN);
+        KeyFrame kf = new KeyFrame(Duration.seconds(1), kv);
+        timeline.getKeyFrames().add(kf);
+        timeline.setOnFinished(t -> {
+            parentContainer.getChildren().remove(anchorRoot);
+        });
+        timeline.play();
+
+    }
+
+    @FXML
+    private void loadLoginDark() {
+
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("FXML_Dark/LogInScene_dark.fxml"));
         try {
             loader.load();
         } catch (IOException e) {
@@ -287,9 +372,59 @@ public class ClientAuthorization {
     }
 
     @FXML
+    private void backDark() {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("FXML_Dark/AppFX_dark.fxml"));
+        try {
+            loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Parent root = loader.getRoot();
+        Scene scene = backButton.getScene();
+        root.translateYProperty().set(scene.getHeight());
+
+        parentContainer.getChildren().add(root);
+
+        Timeline timeline = new Timeline();
+        KeyValue kv = new KeyValue(root.translateYProperty(), 0, Interpolator.EASE_IN);
+        KeyFrame kf = new KeyFrame(Duration.seconds(1), kv);
+        timeline.getKeyFrames().add(kf);
+        timeline.setOnFinished(t -> {
+            parentContainer.getChildren().remove(anchorRoot);
+        });
+        timeline.play();
+    }
+
+    @FXML
     private void tryToSignup() {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("FXML/SignUpScene.fxml"));
+        try {
+            loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Parent root = loader.getRoot();
+        Scene scene = signupButton.getScene();
+        root.translateYProperty().set(scene.getHeight());
+
+        parentContainer.getChildren().add(root);
+
+        Timeline timeline = new Timeline();
+        KeyValue kv = new KeyValue(root.translateYProperty(), 0, Interpolator.EASE_IN);
+        KeyFrame kf = new KeyFrame(Duration.seconds(1), kv);
+        timeline.getKeyFrames().add(kf);
+        timeline.setOnFinished(t -> {
+            parentContainer.getChildren().remove(anchorRoot);
+        });
+        timeline.play();
+    }
+
+    @FXML
+    private void tryToSignupDark() {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("FXML_Dark/SignUpScene_dark.fxml"));
         try {
             loader.load();
         } catch (IOException e) {
@@ -341,5 +476,62 @@ public class ClientAuthorization {
         }
 
 
+    }
+
+    @FXML
+    private void registerDark() {
+
+        String login = signupLogin.getText();
+        String password = signupPassword.getText();
+        if (!login.equals("") && !password.equals("")) {
+            signUp(login, password);
+        }
+        try {
+            String ans = input.readUTF();
+            switch (ans) {
+                case "badsignup":
+                    System.out.println("Пользователь с данным логином уже существует, попробуйте еще раз");
+                    Alert alert = new Alert(Alert.AlertType.WARNING, "Пользователь с данным логином уже существует, попробуйте еще раз", ButtonType.OK);
+                    alert.showAndWait();
+                    if (alert.getResult() == ButtonType.OK) {
+                        alert.hide();
+                    }
+                    break;
+                case "goodsignup":
+                    System.out.println("Регистрация прошла успешно");
+
+                    break;
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+    }
+
+    @FXML
+    private void switchToAppDark() {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("FXML_Dark/AppFX_dark.fxml"));
+        try {
+            loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Parent root = loader.getRoot();
+        Scene scene = themeButton.getScene();
+        root.translateYProperty().set(scene.getHeight());
+
+        parentContainer.getChildren().add(root);
+
+        Timeline timeline = new Timeline();
+        KeyValue kv = new KeyValue(root.translateYProperty(), 0, Interpolator.EASE_IN);
+        KeyFrame kf = new KeyFrame(Duration.seconds(1), kv);
+        timeline.getKeyFrames().add(kf);
+        timeline.setOnFinished(t -> {
+            parentContainer.getChildren().remove(anchorRoot);
+        });
+        timeline.play();
     }
 }

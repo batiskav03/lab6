@@ -10,9 +10,9 @@
 <?import javafx.scene.text.Font?>
 
 <StackPane fx:id="parentContainer" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.SenderManager">
-    <AnchorPane id="AnchorPane" fx:id="anchorRoot" prefHeight="1080.0" prefWidth="1920.0" style="-fx-background-color: #2F4F4F; -fx-border-color: #bababa; -fx-border-width: 10;">
+    <AnchorPane id="AnchorPane" fx:id="anchorRoot" prefHeight="108.0" prefWidth="1920.0" style="-fx-background-color: #2F4F4F; -fx-border-color: #bababa; -fx-border-width: 10;">
         <children>
-         <ButtonBar layoutX="2.0" layoutY="619.0" prefHeight="192.0" prefWidth="817.0">
+         <ButtonBar layoutX="228.0" layoutY="619.0" prefHeight="192.0" prefWidth="817.0">
             <buttons>
                   <Button fx:id="printAscendingButton" mnemonicParsing="false" onAction="#printAscendingButton" prefHeight="75.0" prefWidth="366.0" text="PRINT  ASCENDING">
                       <font>
