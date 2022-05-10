@@ -29,7 +29,7 @@
                 <Cursor fx:constant="DEFAULT" />
             </cursor>
         </TextField>
-        <Button fx:id="registerButton" layoutX="685.0" layoutY="748.0" mnemonicParsing="false" onAction="#register" prefHeight="109.0" prefWidth="380.0" style="-fx-background-color: #DDBC95; -fx-background-radius: 2300;" text="Enter" textFill="#20232a">
+        <Button fx:id="registerButton" layoutX="685.0" layoutY="748.0" mnemonicParsing="false" onAction="#registerDark" prefHeight="109.0" prefWidth="380.0" style="-fx-background-color: #DDBC95; -fx-background-radius: 2300;" text="Enter" textFill="#20232a">
             <font>
                 <Font name="Segoe UI Black" size="48.0" />
             </font>
