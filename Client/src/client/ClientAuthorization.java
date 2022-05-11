@@ -356,4 +356,29 @@ public class ClientAuthorization {
     private void switchToAppDark() {
         slide(themeButton,"FXML_Dark/AppFX_dark.fxml");
     }
+
+    @FXML
+    private void switchToAppLight() {
+        slide(themeButton,"FXML/AppFX.fxml");
+    }
+
+    @FXML
+    private void switchToLogInLight() {
+        slide(themeButton,"FXML/LogInScene.fxml");
+    }
+
+    @FXML
+    private void switchToLogInLDark() {
+        slide(themeButton,"FXML_Dark/LogInScene_dark.fxml");
+    }
+
+    @FXML
+    private void switchToSignUpDark() {
+        slide(themeButton,"FXML_Dark/SignUpScene_dark.fxml");
+    }
+
+    @FXML
+    private void switchToSignLight() {
+        slide(themeButton,"FXML/SignUpScene.fxml");
+    }
 }

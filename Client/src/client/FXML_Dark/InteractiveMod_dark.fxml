@@ -2,121 +2,192 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
 <StackPane fx:id="parentContainer" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1"
            fx:controller="client.SenderManager">
-    <AnchorPane id="AnchorPane" fx:id="anchorRoot" prefHeight="108.0" prefWidth="1920.0"
-                style="-fx-background-color: #2F4F4F; -fx-border-color: #bababa; -fx-border-width: 10;">
+    <AnchorPane id="AnchorPane" fx:id="anchorRoot" layoutX="10.0" layoutY="10.0" prefHeight="1080.0" prefWidth="1920.0"
+                style="-fx-background-color: #20232A;">
         <children>
-            <ButtonBar layoutX="228.0" layoutY="619.0" prefHeight="192.0" prefWidth="817.0">
-                <buttons>
-                    <Button fx:id="printAscendingButton" mnemonicParsing="false" onAction="#handleButtonAction"
-                            prefHeight="75.0" prefWidth="366.0" text="PRINT  ASCENDING">
+            <TextArea fx:id="textArea" editable="false" layoutX="42.0" layoutY="112.0" prefHeight="398.0"
+                      prefWidth="1846.0"
+                      style="-fx-border-color: #7C6F6B; -fx-border-width: 10; -fx-border-radius: 15; -fx-background-radius: 25;">
+                <font>
+                    <Font name="Consolas" size="24.0"/>
+                </font>
+            </TextArea>
+            <ImageView fitHeight="98.0" fitWidth="101.0" layoutX="79.0" layoutY="27.0" pickOnBounds="true"
+                       preserveRatio="true">
+                <image>
+                    <Image url="@../GUI/Data/6mz.gif"/>
+                </image>
+            </ImageView>
+            <Label layoutX="586.0" layoutY="8.0" prefHeight="98.0" prefWidth="747.0" text="CHOOSE  COMMAND"
+                   textFill="#ddbc95">
+                <font>
+                    <Font name="Century Gothic Bold" size="72.0"/>
+                </font>
+            </Label>
+            <AnchorPane layoutX="68.0" layoutY="519.0" prefHeight="549.0" prefWidth="1310.0"
+                        style="-fx-background-color: #DDBC95; -fx-background-radius: 80;">
+                <children>
+                    <ButtonBar layoutX="5.0" layoutY="413.0" prefHeight="98.0" prefWidth="1278.0">
+                        <buttons>
+                            <Button fx:id="removeByGreaterKeyButton" mnemonicParsing="false"
+                                    onAction="#handleButtonActionDark" prefHeight="179.0" prefWidth="466.0"
+                                    style="-fx-background-color: #7C6F6B; -fx-background-radius: 90;"
+                                    text="REMOVE BY GREATER KEY" textFill="#ddbc95">
+                                <font>
+                                    <Font name="Segoe UI Black" size="28.0"/>
+                                </font>
+                            </Button>
+                            <Button fx:id="removeByKeyButton" mnemonicParsing="false" onAction="#handleButtonActionDark"
+                                    prefHeight="140.0" prefWidth="466.0"
+                                    style="-fx-background-color: #7C6F6B; -fx-background-radius: 90;"
+                                    text="REMOVE BY KEY" textFill="#ddbc95">
+                                <font>
+                                    <Font name="Segoe UI Black" size="28.0"/>
+                                </font>
+                            </Button>
+                            <Button fx:id="removeByLowerKeyButton" mnemonicParsing="false"
+                                    onAction="#handleButtonActionDark" prefHeight="234.0" prefWidth="465.0"
+                                    style="-fx-background-color: #7C6F6B; -fx-background-radius: 90;"
+                                    text="REMOVE BY LOWER KEY" textFill="#ddbc95">
+                                <font>
+                                    <Font name="Segoe UI Black" size="28.0"/>
+                                </font>
+                            </Button>
+                        </buttons>
+                    </ButtonBar>
+                    <Label layoutX="550.0" layoutY="-5.0" text="MENU" textFill="#7c6f6b">
                         <font>
-                            <Font name="Segoe UI Black" size="32.0"/>
+                            <Font name="Segoe UI Black" size="64.0"/>
                         </font>
-                    </Button>
-                    <MenuButton fx:id="filterByColorButton" mnemonicParsing="false" prefHeight="75.0"
-                                text="FILTER BY COLOR">
-                        <items>
-                            <MenuItem fx:id="blackFilter" mnemonicParsing="false" onAction="#blackFilter" text="BLACK"/>
-                            <MenuItem id="yellowFilter" fx:id="yellowFilter" mnemonicParsing="false"
-                                      onAction="#yellowFilter" text="YELLOW"/>
-                            <MenuItem fx:id="blueFilter" mnemonicParsing="false" onAction="#blueFilter" text="BLUE"/>
-                        </items>
-                        <font>
-                            <Font name="Segoe UI Black" size="31.0"/>
-                        </font>
-                    </MenuButton>
-                </buttons>
-            </ButtonBar>
-            <ButtonBar layoutX="51.0" layoutY="902.0" prefHeight="134.0" prefWidth="1501.0">
-                <buttons>
-                    <Button fx:id="removeByKeyButton" mnemonicParsing="false" onAction="#handleButtonAction"
-                            prefHeight="75.0" prefWidth="348.0" text="REMOVE  BY  KEY">
-                        <font>
-                            <Font name="Segoe UI Black" size="32.0"/>
-                        </font>
-                    </Button>
-                    <Button fx:id="removeByLowerKeyButton" mnemonicParsing="false" onAction="#handleButtonAction"
-                            prefHeight="75.0" prefWidth="465.0" text="REMOVE  BY  LOWER  KEY">
-                        <font>
-                            <Font name="Segoe UI Black" size="32.0"/>
-                        </font>
-                    </Button>
-                    <Button fx:id="removeByGreaterKeyButton" mnemonicParsing="false" onAction="#handleButtonAction"
-                            prefHeight="75.0" prefWidth="487.0" text="REMOVE  BY  GREATER  KEY">
-                        <font>
-                            <Font name="Segoe UI Black" size="32.0"/>
-                        </font>
-                    </Button>
-                </buttons>
-            </ButtonBar>
-            <ButtonBar layoutX="51.0" layoutY="845.0" prefHeight="83.0" prefWidth="1318.0">
-                <buttons>
-                    <Button fx:id="updateByIdButton" mnemonicParsing="false" onAction="#handleButtonAction"
-                            prefHeight="75.0" prefWidth="349.0" text="UPDATE  BY  ID">
-                        <font>
-                            <Font name="Segoe UI Black" size="32.0"/>
-                        </font>
-                    </Button>
-                    <Button fx:id="InsertButton" mnemonicParsing="false" onAction="#handleButtonAction"
-                            prefHeight="75.0" prefWidth="206.0" text="INSERT">
-                        <font>
-                            <Font name="Segoe UI Black" size="32.0"/>
-                        </font>
-                    </Button>
-                    <Button fx:id="InsertMaxButton" mnemonicParsing="false" onAction="#handleButtonAction"
-                            prefHeight="75.0" prefWidth="275.0" text="INSERT  MAX">
-                        <font>
-                            <Font name="Segoe UI Black" size="32.0"/>
-                        </font>
-                    </Button>
-                    <Button fx:id="clearButton" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="75.0"
-                            prefWidth="206.0" text="CLEAR">
-                        <font>
-                            <Font name="Segoe UI Black" size="32.0"/>
-                        </font>
-                    </Button>
-                </buttons>
-            </ButtonBar>
-            <ButtonBar layoutX="55.0" layoutY="759.0" prefHeight="83.0" prefWidth="682.0">
-                <buttons>
-                    <Button fx:id="helpButton" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="75.0"
-                            prefWidth="206.0" text="HELP">
-                        <font>
-                            <Font name="Segoe UI Black" size="32.0"/>
-                        </font>
-                    </Button>
-                    <Button fx:id="exitButton" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="75.0"
-                            prefWidth="206.0" text="EXIT">
-                        <font>
-                            <Font name="Segoe UI Black" size="32.0"/>
-                        </font>
-                    </Button>
-                    <Button fx:id="infoButton" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="75.0"
-                            prefWidth="206.0" text="INFO">
-                        <font>
-                            <Font name="Segoe UI Black" size="32.0"/>
-                        </font>
-                    </Button>
-                    <Button fx:id="showButton" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="75.0"
-                            prefWidth="206.0" text="SHOW">
-                        <font>
-                            <Font name="Segoe UI Black" size="32.0"/>
-                        </font>
-                    </Button>
-                </buttons>
-            </ButtonBar>
-            <TextArea fx:id="textArea" editable="false" layoutX="65.0" layoutY="65.0" prefHeight="438.0"
-                      prefWidth="1794.0"
-                      style="-fx-border-color: #000000; -fx-border-width: 15; -fx-border-radius: 15; -fx-background-radius: 25;"/>
+                    </Label>
+                    <ButtonBar layoutX="3.0" layoutY="87.0" prefHeight="74.0" prefWidth="1274.0">
+                        <buttons>
+                            <Button fx:id="exitButton" mnemonicParsing="false" onAction="#handleButtonActionDark"
+                                    prefHeight="98.0" prefWidth="417.0"
+                                    style="-fx-background-color: #7C6F6B; -fx-background-radius: 90;" text="EXIT"
+                                    textFill="#ddbc95">
+                                <font>
+                                    <Font name="Segoe UI Black" size="28.0"/>
+                                </font>
+                            </Button>
+                            <Button fx:id="clearButton" mnemonicParsing="false" onAction="#handleButtonActionDark"
+                                    prefHeight="234.0" prefWidth="206.0"
+                                    style="-fx-background-color: #7C6F6B; -fx-background-radius: 90;" text="CLEAR"
+                                    textFill="#ddbc95">
+                                <font>
+                                    <Font name="Segoe UI Black" size="28.0"/>
+                                </font>
+                            </Button>
+                            <Button fx:id="helpButton" mnemonicParsing="false" onAction="#handleButtonActionDark"
+                                    prefHeight="255.0" prefWidth="206.0"
+                                    style="-fx-background-color: #7C6F6B; -fx-background-radius: 90;" text="HELP"
+                                    textFill="#ddbc95">
+                                <font>
+                                    <Font name="Segoe UI Black" size="28.0"/>
+                                </font>
+                            </Button>
+                            <Button fx:id="infoButton" mnemonicParsing="false" onAction="#handleButtonActionDark"
+                                    prefHeight="220.0" prefWidth="206.0"
+                                    style="-fx-background-color: #7C6F6B; -fx-background-radius: 90;" text="INFO"
+                                    textFill="#ddbc95">
+                                <font>
+                                    <Font name="Segoe UI Black" size="32.0"/>
+                                </font>
+                            </Button>
+                            <Button fx:id="showButton" mnemonicParsing="false" onAction="#handleButtonActionDark"
+                                    prefHeight="74.0" prefWidth="206.0"
+                                    style="-fx-background-color: #7C6F6B; -fx-background-radius: 90;" text="SHOW"
+                                    textFill="#ddbc95">
+                                <font>
+                                    <Font name="Segoe UI Black" size="28.0"/>
+                                </font>
+                            </Button>
+                        </buttons>
+                    </ButtonBar>
+                    <ButtonBar layoutX="-1.0" layoutY="184.0" prefHeight="90.0" prefWidth="1282.0">
+                        <buttons>
+                            <Button fx:id="printAscendingButton" mnemonicParsing="false" onAction="#handleButtonActionDark"
+                                    prefHeight="87.0" prefWidth="784.0"
+                                    style="-fx-background-color: #7C6F6B; -fx-background-radius: 90;"
+                                    text="PRINT ASCENDING" textFill="#ddbc95">
+                                <font>
+                                    <Font name="Segoe UI Black" size="28.0"/>
+                                </font>
+                            </Button>
+                            <MenuButton fx:id="filterByColorButton" mnemonicParsing="false" prefHeight="284.0"
+                                        style="-fx-background-color: #7C6F6B; -fx-background-radius: 90;"
+                                        text="FILTER BY COLOR" textFill="#ddbc95">
+                                <items>
+                                    <MenuItem fx:id="blackFilter" mnemonicParsing="false" onAction="#blackFilter"
+                                              text="BLACK"/>
+                                    <MenuItem id="yellowFilter" fx:id="yellowFilter" mnemonicParsing="false"
+                                              onAction="#yellowFilter" text="YELLOW"/>
+                                    <MenuItem fx:id="blueFilter" mnemonicParsing="false" onAction="#blueFilter"
+                                              text="BLUE"/>
+                                </items>
+                                <font>
+                                    <Font name="Segoe UI Black" size="28.0"/>
+                                </font>
+                            </MenuButton>
+                        </buttons>
+                    </ButtonBar>
+                    <ButtonBar layoutX="2.0" layoutY="297.0" prefHeight="89.0" prefWidth="1282.0">
+                        <buttons>
+                            <Button fx:id="updateByIdButton" mnemonicParsing="false" onAction="#handleButtonActionDark"
+                                    prefHeight="90.0" prefWidth="470.0"
+                                    style="-fx-background-color: #7C6F6B; -fx-background-radius: 90;"
+                                    text="UPDATE BY ID" textFill="#ddbc95">
+                                <font>
+                                    <Font name="Segoe UI Black" size="28.0"/>
+                                </font>
+                            </Button>
+                            <Button fx:id="InsertButton" mnemonicParsing="false" onAction="#handleButtonActionDark"
+                                    prefHeight="288.0" prefWidth="206.0"
+                                    style="-fx-background-color: #7C6F6B; -fx-background-radius: 90;" text="INSERT"
+                                    textFill="#ddbc95">
+                                <font>
+                                    <Font name="Segoe UI Black" size="28.0"/>
+                                </font>
+                            </Button>
+                            <Button fx:id="InsertMaxButton" mnemonicParsing="false" onAction="#handleButtonActionDark"
+                                    prefHeight="237.0" prefWidth="275.0"
+                                    style="-fx-background-color: #7C6F6B; -fx-background-radius: 90;" text="MAX BY DATE"
+                                    textFill="#ddbc95">
+                                <font>
+                                    <Font name="Segoe UI Black" size="28.0"/>
+                                </font>
+                            </Button>
+                        </buttons>
+                    </ButtonBar>
+                </children>
+            </AnchorPane>
+            <ImageView fitHeight="1202.0" fitWidth="526.0" layoutX="1391.0" layoutY="579.0" pickOnBounds="true"
+                       preserveRatio="true">
+                <image>
+                    <Image url="@../GUI/Data/6KpW.gif"/>
+                </image>
+            </ImageView>
+            <ImageView fitHeight="159.0" fitWidth="149.0" layoutX="1751.0" layoutY="-20.0" pickOnBounds="true"
+                       preserveRatio="true">
+                <image>
+                    <Image url="@../GUI/Data/93533501-53aa0d80-f943-11ea-90d1-e6e70eca2e29.gif"/>
+                </image>
+            </ImageView>
+            <Button fx:id="themeButton" layoutX="1789.0" layoutY="19.0" mnemonicParsing="false"
+                    onAction="#switchToInteractiveLight" opacity="0.0" prefHeight="74.0" prefWidth="73.0"
+                    style="-fx-background-radius: 12323;"/>
         </children>
     </AnchorPane>
 </StackPane>

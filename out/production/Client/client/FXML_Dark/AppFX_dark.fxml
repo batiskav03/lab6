@@ -46,11 +46,12 @@
                 <Image url="@../GUI/Data/93533501-53aa0d80-f943-11ea-90d1-e6e70eca2e29.gif" />
             </image>
         </ImageView>
-        <ImageView fitHeight="656.0" fitWidth="626.0" layoutX="18.0" layoutY="424.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fitHeight="656.0" fitWidth="626.0" layoutX="114.0" layoutY="423.0" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@../GUI/Data/ZAc2.gif" />
+                <Image url="@../GUI/Data/Paw.gif" />
             </image>
         </ImageView>
+      <Button fx:id="themeButton" layoutX="1733.0" layoutY="58.0" mnemonicParsing="false" onAction="#switchToAppLight" opacity="0.0" prefHeight="103.0" prefWidth="114.0" style="-fx-background-radius: 12323;" />
         <cursor>
             <Cursor fx:constant="DEFAULT" />
         </cursor>

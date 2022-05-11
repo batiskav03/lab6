@@ -41,7 +41,7 @@
             <Font name="Segoe UI Black" size="80.0" />
          </font>
       </Label>
-      <ImageView fitHeight="223.0" fitWidth="236.0" layoutX="1683.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="223.0" fitWidth="236.0" layoutX="1693.0" layoutY="-7.0" pickOnBounds="true" preserveRatio="true">
          <image>
              <Image url="@../GUI/Data/93533501-53aa0d80-f943-11ea-90d1-e6e70eca2e29.gif" />
          </image>
@@ -51,7 +51,7 @@
              <Image url="@../GUI/Data/ZAc2.gif" />
          </image>
       </ImageView>
-      <Button fx:id="themeButton" layoutX="1738.0" layoutY="73.0" mnemonicParsing="false" onAction="#switchToAppDark" opacity="0.0" prefHeight="103.0" prefWidth="114.0" style="-fx-background-radius: 12323;" />
+      <Button fx:id="themeButton" layoutX="1748.0" layoutY="52.0" mnemonicParsing="false" onAction="#switchToAppDark" opacity="0.0" prefHeight="103.0" prefWidth="114.0" style="-fx-background-radius: 12323;" />
         <cursor>
             <Cursor fx:constant="DEFAULT" />
         </cursor>

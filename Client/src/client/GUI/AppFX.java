@@ -23,8 +23,8 @@ import java.util.Objects;
 
 public class AppFX extends Application {
     public static void main(String[] args) {
-//        String uriString = new File("Client/src/client/GUI/Data/song.wav").toURI().toString();
-//        MediaPlayer player = new MediaPlayer( new Media(uriString));
+        String uriString = new File("Client/src/client/GUI/Data/song.wav").toURI().toString();
+        MediaPlayer player = new MediaPlayer( new Media(uriString));
 //        player.play();
         Application.launch();
     }

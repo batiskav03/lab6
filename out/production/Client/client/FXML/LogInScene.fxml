@@ -6,45 +6,66 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<StackPane fx:id="parentContainer" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.ClientAuthorization">
-<AnchorPane prefHeight="1080.0" prefWidth="1920.0" style="-fx-background-color: #EED8C9;">
-    <PasswordField fx:id="passwordField" layoutX="725.0" layoutY="521.0" prefHeight="50.0" prefWidth="378.0" promptText="Password" style="-fx-background-color: #B38867; -fx-background-radius: 20;">
-        <font>
-            <Font name="Segoe UI Bold" size="12.0" />
-        </font></PasswordField>
-    <Group>
-        <VBox />
-    </Group>
-    <TextField fx:id="loginField" layoutX="725.0" layoutY="442.0" prefHeight="50.0" prefWidth="378.0" promptText="Login" style="-fx-background-color: #B38867; -fx-background-radius: 20;">
-        <font>
-            <Font name="Segoe UI Bold" size="12.0" />
-        </font>
+<StackPane fx:id="parentContainer" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="client.ClientAuthorization">
+    <AnchorPane prefHeight="1080.0" prefWidth="1920.0" style="-fx-background-color: #EED8C9;">
+        <PasswordField fx:id="passwordField" layoutX="771.0" layoutY="522.0" prefHeight="50.0" prefWidth="378.0"
+                       promptText="Password" style="-fx-background-color: #B38867; -fx-background-radius: 20;">
+            <font>
+                <Font name="Segoe UI Bold" size="12.0"/>
+            </font>
+        </PasswordField>
+        <Group>
+            <VBox/>
+        </Group>
+        <TextField fx:id="loginField" layoutX="771.0" layoutY="443.0" prefHeight="50.0" prefWidth="378.0"
+                   promptText="Login" style="-fx-background-color: #B38867; -fx-background-radius: 20;">
+            <font>
+                <Font name="Segoe UI Bold" size="12.0"/>
+            </font>
+            <cursor>
+                <Cursor fx:constant="DEFAULT"/>
+            </cursor>
+        </TextField>
+        <Button fx:id="enterToSystem" layoutX="771.0" layoutY="755.0" mnemonicParsing="false" onAction="#enterToSystem"
+                prefHeight="110.0" prefWidth="378.0" style="-fx-background-color: #7E675E; -fx-background-radius: 2300;"
+                text="Enter" textFill="#eed8c9">
+            <font>
+                <Font name="Segoe UI Black" size="48.0"/>
+            </font>
+        </Button>
+        <Button fx:id="backButton" layoutX="58.0" layoutY="58.0" mnemonicParsing="false" onAction="#back"
+                prefHeight="72.0" prefWidth="142.0" style="-fx-background-color: #B38867; -fx-background-radius: 32;"
+                text="back" textFill="#fff3dc">
+            <font>
+                <Font name="Segoe UI Black" size="24.0"/>
+            </font>
+        </Button>
+        <Label layoutX="668.0" layoutY="178.0" prefHeight="124.0" prefWidth="584.0" text="Authorization"
+               textFill="#7e675e">
+            <font>
+                <Font name="Segoe UI Black Italic" size="85.0"/>
+            </font>
+        </Label>
+        <ImageView fitHeight="223.0" fitWidth="236.0" layoutX="1674.0" layoutY="-6.0" pickOnBounds="true"
+                   preserveRatio="true">
+            <image>
+                <Image url="@../GUI/Data/93533501-53aa0d80-f943-11ea-90d1-e6e70eca2e29.gif"/>
+            </image>
+        </ImageView>
+        <Button fx:id="themeButton" layoutX="1728.0" layoutY="54.0" mnemonicParsing="false"
+                onAction="#switchToLogInLDark" opacity="0.0" prefHeight="103.0" prefWidth="114.0"
+                style="-fx-background-radius: 12323;"/>
         <cursor>
-            <Cursor fx:constant="DEFAULT" />
-        </cursor></TextField>
-    <Button fx:id="enterToSystem" layoutX="725.0" layoutY="756.0" mnemonicParsing="false" onAction="#enterToSystem" prefHeight="110.0" prefWidth="378.0" style="-fx-background-color: #7E675E; -fx-background-radius: 2300;" text="Enter" textFill="#eed8c9">
-        <font>
-            <Font name="Segoe UI Black" size="48.0" />
-        </font>
-    </Button>
-   <Button fx:id="backButton" layoutX="58.0" layoutY="39.0" mnemonicParsing="false" onAction="#back" prefHeight="72.0" prefWidth="142.0" style="-fx-background-color: #B38867; -fx-background-radius: 32;" text="back" textFill="#fff3dc">
-      <font>
-         <Font name="Segoe UI Black" size="24.0" />
-      </font>
-   </Button>
-      <Label layoutX="622.0" layoutY="182.0" prefHeight="124.0" prefWidth="584.0" text="Authorization" textFill="#7e675e">
-         <font>
-            <Font name="Segoe UI Black Italic" size="85.0" />
-         </font>
-      </Label>
-    <cursor>
-        <Cursor fx:constant="DEFAULT" />
-    </cursor>
+            <Cursor fx:constant="DEFAULT"/>
+        </cursor>
 
-</AnchorPane>
+    </AnchorPane>
 </StackPane>

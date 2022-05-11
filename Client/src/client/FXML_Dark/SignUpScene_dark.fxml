@@ -6,6 +6,8 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
@@ -13,7 +15,7 @@
 
 <StackPane fx:id="parentContainer" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.ClientAuthorization">
     <AnchorPane prefHeight="1080.0" prefWidth="1920.0" style="-fx-background-color: #20232A;">
-        <PasswordField fx:id="signupPassword" layoutX="685.0" layoutY="531.0" prefHeight="51.0" prefWidth="380.0" promptText="Password" style="-fx-background-color: #7C6F6B; -fx-background-radius: 20;">
+        <PasswordField fx:id="signupPassword" layoutX="755.0" layoutY="531.0" prefHeight="51.0" prefWidth="380.0" promptText="Password" style="-fx-background-color: #7C6F6B; -fx-background-radius: 20;">
             <font>
                 <Font name="Segoe UI Bold" size="12.0" />
             </font>
@@ -21,7 +23,7 @@
         <Group>
             <VBox />
         </Group>
-        <TextField fx:id="signupLogin" layoutX="685.0" layoutY="430.0" prefHeight="51.0" prefWidth="380.0" promptText="Login" style="-fx-background-color: #7C6F6B; -fx-background-radius: 20;">
+        <TextField fx:id="signupLogin" layoutX="755.0" layoutY="432.0" prefHeight="51.0" prefWidth="380.0" promptText="Login" style="-fx-background-color: #7C6F6B; -fx-background-radius: 20;">
             <font>
                 <Font name="Segoe UI Bold" size="12.0" />
             </font>
@@ -29,21 +31,27 @@
                 <Cursor fx:constant="DEFAULT" />
             </cursor>
         </TextField>
-        <Button fx:id="registerButton" layoutX="685.0" layoutY="748.0" mnemonicParsing="false" onAction="#registerDark" prefHeight="109.0" prefWidth="380.0" style="-fx-background-color: #DDBC95; -fx-background-radius: 2300;" text="Enter" textFill="#20232a">
+        <Button fx:id="registerButton" layoutX="755.0" layoutY="748.0" mnemonicParsing="false" onAction="#registerDark" prefHeight="109.0" prefWidth="380.0" style="-fx-background-color: #DDBC95; -fx-background-radius: 2300;" text="Enter" textFill="#20232a">
             <font>
                 <Font name="Segoe UI Black" size="48.0" />
             </font>
         </Button>
-        <Button id="backButton" fx:id="backButton" layoutX="60.0" layoutY="40.0" mnemonicParsing="false" onAction="#backDark" prefHeight="70.0" prefWidth="154.0" style="-fx-background-color: #7C6F6B; -fx-background-radius: 35;" text="back" textFill="#20232a">
+        <Button id="backButton" fx:id="backButton" layoutX="65.0" layoutY="48.0" mnemonicParsing="false" onAction="#backDark" prefHeight="70.0" prefWidth="154.0" style="-fx-background-color: #7C6F6B; -fx-background-radius: 35;" text="back" textFill="#20232a">
             <font>
                 <Font name="Segoe UI Black" size="24.0" />
             </font>
         </Button>
-        <Label layoutX="615.0" layoutY="183.0" prefHeight="124.0" prefWidth="519.0" text="Registration" textFill="#ddbc95">
+        <Label layoutX="700.0" layoutY="182.0" prefHeight="124.0" prefWidth="519.0" text="Registration" textFill="#ddbc95">
             <font>
                 <Font name="Segoe UI Black Italic" size="85.0" />
             </font>
         </Label>
+      <ImageView fitHeight="223.0" fitWidth="236.0" layoutX="1694.0" layoutY="-15.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../GUI/Data/93533501-53aa0d80-f943-11ea-90d1-e6e70eca2e29.gif" />
+         </image>
+      </ImageView>
+      <Button fx:id="themeButton" layoutX="1749.0" layoutY="45.0" mnemonicParsing="false" onAction="#switchToSignLight" opacity="0.0" prefHeight="103.0" prefWidth="114.0" style="-fx-background-radius: 12323;" />
         <cursor>
             <Cursor fx:constant="DEFAULT" />
         </cursor>

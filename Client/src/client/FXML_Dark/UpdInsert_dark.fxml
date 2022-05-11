@@ -1,14 +1,181 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="client.SenderManager"
-            prefHeight="400.0" prefWidth="600.0">
-
-</AnchorPane>
+<StackPane fx:id="parentContainer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+           prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/18"
+           xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.SenderManager">
+    <AnchorPane id="AnchorPane" fx:id="anchorRoot" prefHeight="1080.0" prefWidth="1920.0"
+                style="-fx-background-color: #20232A;">
+        <children>
+            <TextField fx:id="nameField" layoutX="58.0" layoutY="342.0" prefHeight="54.0" prefWidth="607.0"
+                       style="-fx-background-color: #B38867; -fx-background-radius: 50;">
+                <font>
+                    <Font name="Segoe UI Italic" size="22.0"/>
+                </font>
+            </TextField>
+            <Label layoutX="55.0" layoutY="283.0" text="Name:" textFill="#7c6f6b">
+                <font>
+                    <Font name="Segoe UI Bold" size="34.0"/>
+                </font>
+            </Label>
+            <TextField fx:id="coordinateXField" layoutX="58.0" layoutY="718.0" prefHeight="54.0" prefWidth="607.0"
+                       style="-fx-background-color: #B38867; -fx-background-radius: 50;">
+                <font>
+                    <Font name="Segoe UI Italic" size="22.0"/>
+                </font>
+            </TextField>
+            <Label layoutX="56.0" layoutY="664.0" text="Coordinate X" textFill="#7c6f6b">
+                <font>
+                    <Font name="Segoe UI Bold" size="34.0"/>
+                </font>
+            </Label>
+            <TextField fx:id="coordinateYField" layoutX="57.0" layoutY="841.0" prefHeight="54.0" prefWidth="607.0"
+                       style="-fx-background-color: #B38867; -fx-background-radius: 50;">
+                <font>
+                    <Font name="Segoe UI Italic" size="22.0"/>
+                </font>
+            </TextField>
+            <Label layoutX="57.0" layoutY="787.0" text="Coordinate Y" textFill="#7c6f6b">
+                <font>
+                    <Font name="Segoe UI Bold" size="34.0"/>
+                </font>
+            </Label>
+            <TextField fx:id="ageField" layoutX="58.0" layoutY="470.0" prefHeight="54.0" prefWidth="607.0"
+                       style="-fx-background-color: #B38867; -fx-background-radius: 50;">
+                <font>
+                    <Font name="Segoe UI Italic" size="22.0"/>
+                </font>
+            </TextField>
+            <Label layoutX="58.0" layoutY="418.0" text="Age:" textFill="#7c6f6b">
+                <font>
+                    <Font name="Segoe UI Bold" size="34.0"/>
+                </font>
+            </Label>
+            <Label layoutX="1211.0" layoutY="138.0" text="Color:" textFill="#7c6f6b">
+                <font>
+                    <Font name="Segoe UI Bold" size="34.0"/>
+                </font>
+            </Label>
+            <TextField fx:id="teethField" layoutX="1211.0" layoutY="718.0" prefHeight="54.0" prefWidth="607.0"
+                       style="-fx-background-color: #B38867; -fx-background-radius: 50;">
+                <font>
+                    <Font name="Segoe UI Italic" size="22.0"/>
+                </font>
+            </TextField>
+            <Label layoutX="1215.0" layoutY="283.0" text="Type:" textFill="#7c6f6b">
+                <font>
+                    <Font name="Segoe UI Bold" size="34.0"/>
+                </font>
+            </Label>
+            <Label layoutX="1211.0" layoutY="664.0" text="Teeth count:" textFill="#7c6f6b">
+                <font>
+                    <Font name="Segoe UI Bold" size="34.0"/>
+                </font>
+            </Label>
+            <Label layoutX="1343.0" layoutY="576.0" text="DRAGON HEAD" textFill="#7c6f6b">
+                <font>
+                    <Font name="Segoe UI Black" size="41.0"/>
+                </font>
+            </Label>
+            <Label layoutX="1208.0" layoutY="787.0" text="Eyes count:" textFill="#7c6f6b">
+                <font>
+                    <Font name="Segoe UI Bold" size="34.0"/>
+                </font>
+            </Label>
+            <TextField fx:id="eyesField" layoutX="1211.0" layoutY="841.0" prefHeight="54.0" prefWidth="607.0"
+                       style="-fx-background-color: #B38867; -fx-background-radius: 50;">
+                <font>
+                    <Font name="Segoe UI Italic" size="22.0"/>
+                </font>
+            </TextField>
+            <Label layoutX="211.0" layoutY="576.0" text="COORDINATES" textFill="#7c6f6b">
+                <font>
+                    <Font name="Segoe UI Black" size="41.0"/>
+                </font>
+            </Label>
+            <MenuButton fx:id="ColorMenuButton" layoutX="1211.0" layoutY="205.0" mnemonicParsing="false"
+                        onAction="#ColorMenuButton" prefHeight="51.0" prefWidth="607.0"
+                        style="-fx-background-color: #B38867; -fx-background-radius: 50;" text="Choose color">
+                <items>
+                    <MenuItem fx:id="yellowDragon" mnemonicParsing="false" onAction="#yellowDragon" text="Yellow"/>
+                    <MenuItem fx:id="blackDragon" mnemonicParsing="false" onAction="#blackDragon" text="Black"/>
+                    <MenuItem fx:id="blueDragon" mnemonicParsing="false" onAction="#blueDragon" text="Blue"/>
+                </items>
+                <font>
+                    <Font name="Segoe UI Italic" size="27.0"/>
+                </font>
+            </MenuButton>
+            <Label layoutX="1208.0" layoutY="418.0" text="Character:" textFill="#7c6f6b">
+                <font>
+                    <Font name="Segoe UI Bold" size="34.0"/>
+                </font>
+            </Label>
+            <MenuButton fx:id="typeMenuButton" layoutX="1211.0" layoutY="343.0" mnemonicParsing="false"
+                        onAction="#typeMenuButton" prefHeight="51.0" prefWidth="607.0"
+                        style="-fx-background-color: #B38867; -fx-background-radius: 50;" text="Choose type">
+                <items>
+                    <MenuItem fx:id="waterDragon" mnemonicParsing="false" onAction="#waterDragon" text="Water"/>
+                    <MenuItem fx:id="undergroundDragon" mnemonicParsing="false" onAction="#undergroundDragon"
+                              text="Underground"/>
+                    <MenuItem fx:id="airDragon" mnemonicParsing="false" onAction="#airDragon" text="Air"/>
+                    <MenuItem fx:id="fireDragon" mnemonicParsing="false" onAction="#fireDragon" text="Fire"/>
+                </items>
+                <font>
+                    <Font name="Segoe UI Italic" size="27.0"/>
+                </font>
+            </MenuButton>
+            <MenuButton fx:id="characterMenuButton" layoutX="1208.0" layoutY="471.0" mnemonicParsing="false"
+                        onAction="#characterMenuButton" prefHeight="51.0" prefWidth="607.0"
+                        style="-fx-background-color: #B38867; -fx-background-radius: 50;" text="Choose character">
+                <items>
+                    <MenuItem fx:id="wiseDragon" mnemonicParsing="false" onAction="#wiseDragon" text="Wise"/>
+                    <MenuItem fx:id="evilDragon" mnemonicParsing="false" onAction="#evilDragon" text="Evil"/>
+                    <MenuItem fx:id="goodDragon" mnemonicParsing="false" onAction="#goodDragon" text="Good"/>
+                </items>
+                <font>
+                    <Font name="Segoe UI Italic" size="27.0"/>
+                </font>
+            </MenuButton>
+            <Label layoutX="425.0" layoutY="32.0" prefHeight="107.0" prefWidth="1014.0" text="NEW DRAGON  CREATING"
+                   textFill="#7c6f6b">
+                <font>
+                    <Font name="Century Gothic Bold" size="82.0"/>
+                </font>
+            </Label>
+            <Button fx:id="createObjField" layoutX="663.0" layoutY="921.0" mnemonicParsing="false"
+                    onAction="#createObjFieldDark" prefHeight="130.0" prefWidth="540.0"
+                    style="-fx-background-color: #7E675E; -fx-background-radius: 40;" text="Submit" textFill="#eed8c9">
+                <font>
+                    <Font name="Segoe UI Black" size="62.0"/>
+                </font>
+            </Button>
+            <TextField fx:id="idkey" layoutX="56.0" layoutY="205.0" onAction="#idkey" prefHeight="51.0"
+                       prefWidth="607.0" style="-fx-background-color: #B38867; -fx-background-radius: 50;">
+                <font>
+                    <Font name="Segoe UI Italic" size="22.0" />
+                </font>
+            </TextField>
+            <Label layoutX="55.0" layoutY="138.0" text="ID/Key:" textFill="#7c6f6b">
+                <font>
+                    <Font name="Segoe UI Bold" size="34.0"/>
+                </font>
+            </Label>
+            <ImageView fitHeight="681.0" fitWidth="374.0" layoutX="746.0" layoutY="201.0" pickOnBounds="true"
+                       preserveRatio="true">
+                <image>
+                    <Image url="@../GUI/Data/dragon_PNG84499.png"/>
+                </image>
+            </ImageView>
+        </children>
+    </AnchorPane>
+</StackPane>
