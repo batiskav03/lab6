@@ -16,5 +16,41 @@
       "eyesCount": 123,
       "toothCount": 123.0
     }
+  },
+  "1": {
+    "owner": "1",
+    "id": 1566194770,
+    "name": "1",
+    "coordinates": {
+      "x": 123,
+      "y": 123.0
+    },
+    "creationDate": "May 11, 2022 3:28:43 AM",
+    "age": 1,
+    "color": "BLACK",
+    "type": "UNDERGROUND",
+    "character": "WISE",
+    "head": {
+      "eyesCount": 123,
+      "toothCount": 123.0
+    }
+  },
+  "1233321": {
+    "owner": "1",
+    "id": 1426737373,
+    "name": "name",
+    "coordinates": {
+      "x": 123,
+      "y": 123.0
+    },
+    "creationDate": "May 11, 2022 8:26:50 AM",
+    "age": 123,
+    "color": "BLUE",
+    "type": "AIR",
+    "character": "WISE",
+    "head": {
+      "eyesCount": 3555555555,
+      "toothCount": 5555555.0
+    }
   }
 }

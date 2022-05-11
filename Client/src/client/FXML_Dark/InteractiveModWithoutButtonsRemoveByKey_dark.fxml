@@ -10,59 +10,47 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<StackPane fx:id="parentContainer" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1"
-           fx:controller="client.SenderManager">
-    <AnchorPane id="AnchorPane" fx:id="anchorRoot" prefHeight="1080.0" prefWidth="1920.0"
-                style="-fx-background-color: #6C5F5B;">
+<StackPane fx:id="parentContainer" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.SenderManager">
+    <AnchorPane id="AnchorPane" fx:id="anchorRoot" prefHeight="1080.0" prefWidth="1920.0" style="-fx-background-color: #6C5F5B;">
         <children>
-            <TextArea fx:id="textArea" editable="false" layoutX="42.0" layoutY="112.0" prefHeight="398.0"
-                      prefWidth="1846.0"
-                      style="-fx-border-color: #20232A; -fx-border-width: 15; -fx-border-radius: 15; -fx-background-radius: 25;">
+            <TextArea fx:id="textArea" editable="false" layoutX="42.0" layoutY="112.0" prefHeight="398.0" prefWidth="1846.0" style="-fx-border-color: #20232A; -fx-border-width: 15; -fx-border-radius: 15; -fx-background-radius: 25;">
                 <font>
-                    <Font name="Consolas" size="24.0"/>
+                    <Font name="Consolas" size="24.0" />
                 </font>
             </TextArea>
-            <TextField fx:id="keyFiled" layoutX="664.0" layoutY="821.0" prefHeight="74.0" prefWidth="565.0"
-                       promptText="key/id" style="-fx-background-color: #ddbc95; -fx-background-radius: 90;">
+            <TextField fx:id="keyFiled" layoutX="664.0" layoutY="821.0" prefHeight="74.0" prefWidth="565.0" promptText="key/id" style="-fx-background-color: #ddbc95; -fx-background-radius: 90;">
                 <font>
-                    <Font name="Segoe UI Italic" size="31.0"/>
+                    <Font name="Segoe UI Italic" size="31.0" />
                 </font>
             </TextField>
-            <Label layoutX="725.0" layoutY="605.0" prefHeight="98.0" prefWidth="445.0" text="Enter key/id:"
-                   textFill="#ddbc95">
+            <Label layoutX="725.0" layoutY="605.0" prefHeight="98.0" prefWidth="445.0" text="%enterkeyidLabel" textFill="#ddbc95">
                 <font>
-                    <Font name="Century Gothic Bold" size="72.0"/>
+                    <Font name="Century Gothic Bold" size="72.0" />
                 </font>
             </Label>
-            <Button fx:id="enterKey" layoutX="844.0" layoutY="959.0" mnemonicParsing="false"
-                    onAction="#enterKeyRemoveByKeyDark" prefHeight="74.0" prefWidth="206.0"
-                    style="-fx-background-color: #ddbc95; -fx-background-radius: 90;" text="ENTER" textFill="#6c5f5b">
+            <Button fx:id="enterKey" layoutX="844.0" layoutY="959.0" mnemonicParsing="false" onAction="#enterKeyRemoveByKeyDark" prefHeight="74.0" prefWidth="206.0" style="-fx-background-color: #ddbc95; -fx-background-radius: 90;" text="%enterButton" textFill="#6c5f5b">
                 <font>
-                    <Font name="Segoe UI Black" size="28.0"/>
+                    <Font name="Segoe UI Black" size="28.0" />
                 </font>
             </Button>
-            <ImageView fitHeight="513.0" fitWidth="741.0" layoutX="42.0" layoutY="540.0" pickOnBounds="true"
-                       preserveRatio="true">
+            <ImageView fitHeight="513.0" fitWidth="741.0" layoutX="42.0" layoutY="540.0" pickOnBounds="true" preserveRatio="true">
                 <image>
-                    <Image url="@../GUI/Data/dragon_PNG84497.png"/>
+                    <Image url="@../GUI/Data/dragon_PNG84497.png" />
                 </image>
             </ImageView>
-            <ImageView fitHeight="513.0" fitWidth="741.0" layoutX="1428.0" layoutY="540.0"
-                       nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="513.0" fitWidth="741.0" layoutX="1428.0" layoutY="540.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
                 <image>
-                    <Image url="@../GUI/Data/dragon_PNG84497.png"/>
+                    <Image url="@../GUI/Data/dragon_PNG84497.png" />
                 </image>
             </ImageView>
-            <Label layoutX="545.0" layoutY="6.0" prefHeight="98.0" prefWidth="803.0" text="ENTER  THE  COMMAND"
-                   textFill="#ddbc95">
+            <Label layoutX="545.0" layoutY="6.0" prefHeight="98.0" prefWidth="803.0" text="%enterthecommandLabel" textFill="#ddbc95">
                 <font>
-                    <Font name="Century Gothic Bold" size="72.0"/>
+                    <Font name="Century Gothic Bold" size="72.0" />
                 </font>
             </Label>
-            <ImageView fitHeight="98.0" fitWidth="101.0" layoutX="83.0" layoutY="33.0" pickOnBounds="true"
-                       preserveRatio="true">
+            <ImageView fitHeight="98.0" fitWidth="101.0" layoutX="83.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
                 <image>
-                    <Image url="@../GUI/Data/6mz.gif"/>
+                    <Image url="@../GUI/Data/6mz.gif" />
                 </image>
             </ImageView>
         </children>

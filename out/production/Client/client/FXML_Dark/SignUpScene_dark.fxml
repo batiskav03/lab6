@@ -31,17 +31,17 @@
                 <Cursor fx:constant="DEFAULT" />
             </cursor>
         </TextField>
-        <Button fx:id="registerButton" layoutX="755.0" layoutY="748.0" mnemonicParsing="false" onAction="#registerDark" prefHeight="109.0" prefWidth="380.0" style="-fx-background-color: #DDBC95; -fx-background-radius: 2300;" text="Enter" textFill="#20232a">
+        <Button fx:id="registerButton" layoutX="755.0" layoutY="748.0" mnemonicParsing="false" onAction="#registerDark" prefHeight="109.0" prefWidth="380.0" style="-fx-background-color: #DDBC95; -fx-background-radius: 2300;" text="%enterButton" textFill="#20232a">
             <font>
                 <Font name="Segoe UI Black" size="48.0" />
             </font>
         </Button>
-        <Button id="backButton" fx:id="backButton" layoutX="65.0" layoutY="48.0" mnemonicParsing="false" onAction="#backDark" prefHeight="70.0" prefWidth="154.0" style="-fx-background-color: #7C6F6B; -fx-background-radius: 35;" text="back" textFill="#20232a">
+        <Button id="backButton" fx:id="backButton" layoutX="65.0" layoutY="48.0" mnemonicParsing="false" onAction="#backDark" prefHeight="70.0" prefWidth="154.0" style="-fx-background-color: #7C6F6B; -fx-background-radius: 35;" text="%backButton" textFill="#20232a">
             <font>
                 <Font name="Segoe UI Black" size="24.0" />
             </font>
         </Button>
-        <Label layoutX="700.0" layoutY="182.0" prefHeight="124.0" prefWidth="519.0" text="Registration" textFill="#ddbc95">
+        <Label layoutX="700.0" layoutY="182.0" prefHeight="124.0" prefWidth="519.0" text="%registrationLabel" textFill="#ddbc95">
             <font>
                 <Font name="Segoe UI Black Italic" size="85.0" />
             </font>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+
+<StackPane fx:id="parentContainer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+           prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/18"
+           xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.SenderManager">
+    <ImageView fitHeight="1081.0" fitWidth="1923.0" pickOnBounds="true" preserveRatio="true">
+        <image>
+            <Image url="@../GUI/Data/196476.jpg"/>
+        </image>
+    </ImageView>
+    <AnchorPane id="AnchorPane" fx:id="anchorRoot" prefHeight="1080.0" prefWidth="1920.0">
+        <children>
+            <ImageView fitHeight="118.0" fitWidth="222.0" layoutX="307.0" layoutY="76.0" pickOnBounds="true"
+                       preserveRatio="true">
+                <image>
+                    <Image url="@../GUI/Data/Dragon-PNG-HD.png"/>
+                </image>
+            </ImageView>
+            <ImageView fitHeight="147.0" fitWidth="259.0" layoutX="1325.0" layoutY="709.0" pickOnBounds="true"
+                       preserveRatio="true">
+                <image>
+                    <Image url="@../GUI/Data/590713f22977615bc3a5e9fa.png"/>
+                </image>
+            </ImageView>
+            <ImageView fitHeight="144.0" fitWidth="243.0" layoutX="1505.0" layoutY="320.0" pickOnBounds="true"
+                       preserveRatio="true">
+                <image>
+                    <Image url="@../GUI/Data/dragon_PNG994.png"/>
+                </image>
+            </ImageView>
+            <ImageView fitHeight="194.0" fitWidth="240.0" layoutX="987.0" layoutY="265.0" pickOnBounds="true"
+                       preserveRatio="true">
+                <image>
+                    <Image url="@../GUI/Data/Dragon-PNG-Photo.png"/>
+                </image>
+            </ImageView>
+            <Button fx:id="dragonButton" layoutX="325.0" layoutY="90.0" mnemonicParsing="false" onAction="#dragon1"
+                    opacity="0.0" prefHeight="90.0" prefWidth="155.0" style="-fx-background-radius: 50;"/>
+            <Button fx:id="dragonButton1" layoutX="1009.0" layoutY="301.0" mnemonicParsing="false" onAction="#dragon2"
+                    opacity="0.0" prefHeight="90.0" prefWidth="155.0" style="-fx-background-radius: 50;"/>
+            <Button fx:id="dragonButton2" layoutX="1348.0" layoutY="719.0" mnemonicParsing="false" onAction="#dragon3"
+                    opacity="0.0" prefHeight="89.0" prefWidth="180.0" style="-fx-background-radius: 50;"/>
+            <Button fx:id="dragonButton3" layoutX="1577.0" layoutY="332.0" mnemonicParsing="false" onAction="#dragon4"
+                    opacity="0.0" prefHeight="110.0" prefWidth="135.0" style="-fx-background-radius: 50;"/>
+        </children>
+    </AnchorPane>
+</StackPane>

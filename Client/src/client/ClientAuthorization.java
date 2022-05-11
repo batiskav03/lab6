@@ -18,9 +18,11 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
 import java.net.URL;
+import java.util.Locale;
 import java.util.ResourceBundle;
 import java.util.Scanner;
 
+import static client.GUI.AppFX.languageResource;
 import static client.StaticClientSocket.getClientSocket;
 
 public class ClientAuthorization {
@@ -89,6 +91,7 @@ public class ClientAuthorization {
     public void simpleSwitch(String URL){
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource(URL));
+        loader.setResources(languageResource);
         try {
             loader.load();
         } catch (IOException e) {
@@ -161,6 +164,7 @@ public class ClientAuthorization {
     public void slide(Button button,String URL) {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource(URL));
+        loader.setResources(languageResource);
         try {
             loader.load();
         } catch (IOException e) {
@@ -381,4 +385,53 @@ public class ClientAuthorization {
     private void switchToSignLight() {
         slide(themeButton,"FXML/SignUpScene.fxml");
     }
+    public void en() throws IOException {
+        Locale.setDefault(Locale.ENGLISH);
+        languageResource = ResourceBundle.getBundle("client.resources.resources", Locale.getDefault());
+        slide(signupButton,"FXML/AppFX.fxml");
+
+    }
+
+    public void fr() {
+        Locale.setDefault(Locale.FRENCH);
+        languageResource = ResourceBundle.getBundle("client.resources.resources", Locale.getDefault());
+        slide(signupButton,"FXML/AppFX.fxml");
+    }
+    public void cs(){
+        Locale.setDefault(new Locale("cs"));
+        languageResource = ResourceBundle.getBundle("client.resources.resources", Locale.getDefault());
+        slide(signupButton,"FXML/AppFX.fxml");
+    }
+    public void ru(){
+        Locale.setDefault(new Locale("ru"));
+        languageResource = ResourceBundle.getBundle("client.resources.resources", Locale.getDefault());
+        slide(signupButton,"FXML/AppFX.fxml");
+
+    }
+    public void endark() throws IOException {
+        Locale.setDefault(Locale.ENGLISH);
+        languageResource = ResourceBundle.getBundle("client.resources.resources", Locale.getDefault());
+        slide(signupButton,"FXML_Dark/AppFX_dark.fxml");
+
+    }
+
+    public void frdark() {
+        Locale.setDefault(Locale.FRENCH);
+        languageResource = ResourceBundle.getBundle("client.resources.resources", Locale.getDefault());
+        slide(signupButton,"FXML_Dark/AppFX_dark.fxml");
+    }
+    public void csdark(){
+        Locale.setDefault(new Locale("cs"));
+        languageResource = ResourceBundle.getBundle("client.resources.resources", Locale.getDefault());
+        slide(signupButton,"FXML_Dark/AppFX_dark.fxml");
+    }
+    public void rudark(){
+        Locale.setDefault(new Locale("ru"));
+        languageResource = ResourceBundle.getBundle("client.resources.resources", Locale.getDefault());
+        slide(signupButton,"FXML_Dark/AppFX_dark.fxml");
+
+    }
+
+
+
 }

@@ -7,7 +7,7 @@ import java.util.HashMap;
 
 public class DatabaseManager {
 
-    private static String PASSWORD = "3361";
+    private static String PASSWORD = "****";
     private static String USER = "postgres";
     private static String URL = "jdbc:postgresql://localhost:5432/postgres";
 

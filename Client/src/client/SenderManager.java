@@ -2,19 +2,29 @@ package client;
 
 import client.commands.*;
 import data.*;
+import javafx.animation.Interpolator;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.IOException;
 import java.util.Date;
+import java.util.Locale;
+import java.util.ResourceBundle;
 import java.util.Scanner;
 
 import static client.ClientAuthorization.ClientLogin;
+import static client.GUI.AppFX.languageResource;
 
 public class SenderManager {
 
@@ -160,11 +170,36 @@ public class SenderManager {
                 "\n";
         textArea.setText(fullText);
     }
+    public void slide(Button button,String URL) {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource(URL));
+        loader.setResources(languageResource);
+        try {
+            loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Parent root = loader.getRoot();
+        Scene scene = button.getScene();
+        root.translateYProperty().set(scene.getHeight());
+
+        parentContainer.getChildren().add(root);
+
+        Timeline timeline = new Timeline();
+        KeyValue kv = new KeyValue(root.translateYProperty(), 0, Interpolator.EASE_IN);
+        KeyFrame kf = new KeyFrame(Duration.seconds(1), kv);
+        timeline.getKeyFrames().add(kf);
+        timeline.setOnFinished(t -> {
+            parentContainer.getChildren().remove(anchorRoot);
+        });
+        timeline.play();
+    }
 
 
     public void simpleSwitch(String URL) {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource(URL));
+        loader.setResources(languageResource);
         try {
             loader.load();
         } catch (IOException e) {
@@ -322,6 +357,7 @@ public class SenderManager {
         } else if (showButton.equals(source)) {
             Show show = new Show();
             printer(show);
+            showLandscape();
         } else if (helpButton.equals(source)) {
             Help help = new Help();
             printer(help);
@@ -350,6 +386,66 @@ public class SenderManager {
 
 
     }
+    @FXML
+    public void dragon1() {
+
+        Alert wrong = new Alert(Alert.AlertType.WARNING, "owner=1, id=1646889798, name='60chlen'," +
+                " coordinates={x = -333, y = 261.0}, creationDate=Wed May 11 00:46:37 MSK 2022, age=123, color=BLACK, " +
+                "type=UNDERGROUND, character=EVIL, head={eyes = 123, tooth = 123.0} ", ButtonType.OK);
+        wrong.showAndWait();
+        if (wrong.getResult() == ButtonType.OK) {
+            wrong.hide();
+        }
+    }
+
+    @FXML
+    public void dragon2() {
+
+        Alert wrong = new Alert(Alert.AlertType.WARNING, "{owner=1, id=1566194770, name='1', " +
+                "coordinates={x = 123, y = 123.0}, creationDate=Wed May 11 03:28:43 MSK 2022, age=1, color=BLACK, " +
+                "type=UNDERGROUND, character=WISE, head={eyes = 123, tooth = 123.0}} ", ButtonType.OK);
+        wrong.showAndWait();
+        if (wrong.getResult() == ButtonType.OK) {
+            wrong.hide();
+        }
+    }
+
+    public void dragon3() {
+
+        Alert wrong = new Alert(Alert.AlertType.INFORMATION, "owner=alever, id=123321231, name='Larymar'," +
+                " coordinates={x = 200, y = -100.0}, creationDate=Wed May 11 11:46:37 MSK 2022, age=18, color=BLACK, " +
+                "type=UNDERGROUND, character=EVIL, head={eyes = 100, tooth = 100} ", ButtonType.OK);
+        wrong.showAndWait();
+        if (wrong.getResult() == ButtonType.OK) {
+            wrong.hide();
+        }
+    }
+
+    public void dragon4() {
+
+        Alert wrong = new Alert(Alert.AlertType.WARNING, "owner=maxxxxx, id=103441123, name='name'," +
+                " coordinates={x = 600, y = 111.0}, creationDate=Wed May 11 00:40:37 MSK 2022, age=69, color=BLACK, " +
+                "type=UNDERGROUND, character=EVIL, head={eyes = 0, tooth = 0.0} ", ButtonType.OK);
+        wrong.showAndWait();
+        if (wrong.getResult() == ButtonType.OK) {
+            wrong.hide();
+        }
+    }
+
+
+    private void showLandscape() {
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getResource("FXML/landscape.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.setFullScreen(true);
+        stage.setScene(scene);
+        stage.show();
+    }
 
     @FXML
     private void handleButtonActionDark(ActionEvent actionEvent) {
@@ -362,6 +458,7 @@ public class SenderManager {
         } else if (showButton.equals(source)) {
             Show show = new Show();
             printer(show);
+            showLandscape();
         } else if (helpButton.equals(source)) {
             Help help = new Help();
             printer(help);
@@ -375,6 +472,7 @@ public class SenderManager {
         } else if (InsertMaxButton.equals(source)) {
             MaxByCreationDate maxbydate = new MaxByCreationDate();
             printer(maxbydate);
+
         } else if (clearButton.equals(source)) {
             Clear clear = new Clear();
             printer(clear);
@@ -480,5 +578,50 @@ public class SenderManager {
         Alert info = new Alert(Alert.AlertType.INFORMATION, ans, ButtonType.OK);
         info.showAndWait();
         simpleSwitch("FXML_Dark/InteractiveMod_dark.fxml");
+    }
+    public void en() throws IOException {
+        Locale.setDefault(Locale.ENGLISH);
+        languageResource = ResourceBundle.getBundle("client.resources.resources", Locale.getDefault());
+        slide(exitButton,"FXML/InteractiveMod.fxml");
+
+    }
+
+    public void fr() {
+        Locale.setDefault(Locale.FRENCH);
+        languageResource = ResourceBundle.getBundle("client.resources.resources", Locale.getDefault());
+        slide(exitButton,"FXML/InteractiveMod.fxml");
+    }
+    public void cs(){
+        Locale.setDefault(new Locale("cs"));
+        languageResource = ResourceBundle.getBundle("client.resources.resources", Locale.getDefault());
+        slide(exitButton,"FXML/InteractiveMod.fxml");
+    }
+    public void ru(){
+        Locale.setDefault(new Locale("ru"));
+        languageResource = ResourceBundle.getBundle("client.resources.resources", Locale.getDefault());
+        slide(exitButton,"FXML/InteractiveMod.fxml");
+
+    }
+    public void endark() throws IOException {
+        Locale.setDefault(Locale.ENGLISH);
+        languageResource = ResourceBundle.getBundle("client.resources.resources", Locale.getDefault());
+        slide(exitButton,"FXML_Dark/InteractiveMod_dark.fxml");
+
+    }
+    public void frdark() {
+        Locale.setDefault(Locale.FRENCH);
+        languageResource = ResourceBundle.getBundle("client.resources.resources", Locale.getDefault());
+        slide(exitButton,"FXML_Dark/InteractiveMod_dark.fxml");
+    }
+    public void csdark(){
+        Locale.setDefault(new Locale("cs"));
+        languageResource = ResourceBundle.getBundle("client.resources.resources", Locale.getDefault());
+        slide(exitButton,"FXML_Dark/InteractiveMod_dark.fxml");
+    }
+    public void rudark(){
+        Locale.setDefault(new Locale("ru"));
+        languageResource = ResourceBundle.getBundle("client.resources.resources", Locale.getDefault());
+        slide(exitButton,"FXML_Dark/InteractiveMod_dark.fxml");
+
     }
 }

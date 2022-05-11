@@ -19,7 +19,7 @@
                     <Font name="Segoe UI Italic" size="22.0" />
                 </font>
             </TextField>
-            <Label layoutX="55.0" layoutY="283.0" text="Name:" textFill="#42313a">
+            <Label layoutX="55.0" layoutY="283.0" text="%nameLabel" textFill="#42313a">
                 <font>
                     <Font name="Segoe UI Bold" size="34.0" />
                 </font>
@@ -29,7 +29,7 @@
                     <Font name="Segoe UI Italic" size="22.0" />
                 </font>
             </TextField>
-            <Label layoutX="56.0" layoutY="664.0" text="Coordinate X" textFill="#42313a">
+            <Label layoutX="56.0" layoutY="664.0" text="%coordinateXLabel" textFill="#42313a">
                 <font>
                     <Font name="Segoe UI Bold" size="34.0" />
                 </font>
@@ -39,7 +39,7 @@
                     <Font name="Segoe UI Italic" size="22.0" />
                 </font>
             </TextField>
-            <Label layoutX="57.0" layoutY="787.0" text="Coordinate Y" textFill="#42313a">
+            <Label layoutX="57.0" layoutY="787.0" text="%coordinateYLabel" textFill="#42313a">
                 <font>
                     <Font name="Segoe UI Bold" size="34.0" />
                 </font>
@@ -49,12 +49,12 @@
                     <Font name="Segoe UI Italic" size="22.0" />
                 </font>
             </TextField>
-            <Label layoutX="58.0" layoutY="418.0" text="Age:" textFill="#42313a">
+            <Label layoutX="58.0" layoutY="418.0" text="%ageLabel" textFill="#42313a">
                 <font>
                     <Font name="Segoe UI Bold" size="34.0" />
                 </font>
             </Label>
-            <Label layoutX="1211.0" layoutY="138.0" text="Color:" textFill="#42313a">
+            <Label layoutX="1211.0" layoutY="138.0" text="%colorLabel" textFill="#42313a">
                 <font>
                     <Font name="Segoe UI Bold" size="34.0" />
                 </font>
@@ -64,22 +64,22 @@
                     <Font name="Segoe UI Italic" size="22.0" />
                 </font>
             </TextField>
-            <Label layoutX="1215.0" layoutY="283.0" text="Type:" textFill="#42313a">
+            <Label layoutX="1215.0" layoutY="283.0" text="%typeLabel" textFill="#42313a">
                 <font>
                     <Font name="Segoe UI Bold" size="34.0" />
                 </font>
             </Label>
-            <Label layoutX="1211.0" layoutY="664.0" text="Teeth count:" textFill="#42313a">
+            <Label layoutX="1211.0" layoutY="664.0" text="%teethLabel" textFill="#42313a">
                 <font>
                     <Font name="Segoe UI Bold" size="34.0" />
                 </font>
             </Label>
-            <Label layoutX="1343.0" layoutY="576.0" text="DRAGON HEAD" textFill="#42313a">
+            <Label layoutX="1343.0" layoutY="576.0" text="%dragonheadLabel" textFill="#42313a">
                 <font>
                     <Font name="Segoe UI Black" size="41.0" />
                 </font>
             </Label>
-            <Label layoutX="1208.0" layoutY="787.0" text="Eyes count:">
+            <Label layoutX="1208.0" layoutY="787.0" text="%eyesLabel">
                 <font>
                     <Font name="Segoe UI Bold" size="34.0" />
                 </font>
@@ -89,7 +89,7 @@
                     <Font name="Segoe UI Italic" size="22.0" />
                 </font>
             </TextField>
-            <Label layoutX="211.0" layoutY="576.0" text="COORDINATES" textFill="#42313a">
+            <Label layoutX="211.0" layoutY="576.0" text="%coordinatesLabel" textFill="#42313a">
                 <font>
                     <Font name="Segoe UI Black" size="41.0" />
                 </font>
@@ -104,7 +104,7 @@
                     <Font name="Segoe UI Italic" size="27.0" />
                 </font>
             </MenuButton>
-            <Label layoutX="1208.0" layoutY="418.0" text="Character:" textFill="#42313a">
+            <Label layoutX="1208.0" layoutY="418.0" text="%characterLabel" textFill="#42313a">
                 <font>
                     <Font name="Segoe UI Bold" size="34.0" />
                 </font>
@@ -130,27 +130,31 @@
                     <Font name="Segoe UI Italic" size="27.0" />
                 </font>
             </MenuButton>
-            <Label layoutX="425.0" layoutY="32.0" prefHeight="107.0" prefWidth="1014.0" text="NEW DRAGON  CREATING" textFill="#42313a">
+            <Label layoutX="425.0" layoutY="32.0" prefHeight="107.0" prefWidth="1014.0" text="%newdragoncreatingLabel" textFill="#42313a">
                 <font>
                     <Font name="Century Gothic Bold" size="82.0" />
                 </font>
             </Label>
-            <Button fx:id="createObjField" layoutX="663.0" layoutY="921.0" mnemonicParsing="false" onAction="#createObjField" prefHeight="130.0" prefWidth="540.0" style="-fx-background-color: #7E675E; -fx-background-radius: 40;" text="Submit" textFill="#eed8c9">
+            <Button fx:id="createObjField" layoutX="663.0" layoutY="921.0" mnemonicParsing="false" onAction="#createObjField" prefHeight="130.0" prefWidth="540.0" style="-fx-background-color: #7E675E; -fx-background-radius: 40;" text="submitButton" textFill="#eed8c9">
                 <font>
                     <Font name="Segoe UI Black" size="62.0" />
                 </font>
             </Button>
-            <TextField fx:id="idkey" layoutX="56.0" layoutY="205.0" onAction="#idkey" prefHeight="51.0" prefWidth="607.0" style="-fx-background-color: #B38867; -fx-background-radius: 50;" />
-         <Label layoutX="55.0" layoutY="138.0" text="ID/Key:" textFill="#42313a">
-            <font>
-               <Font name="Segoe UI Bold" size="34.0" />
-            </font>
-         </Label>
-         <ImageView fitHeight="681.0" fitWidth="374.0" layoutX="746.0" layoutY="201.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-               <Image url="@../GUI/Data/dragon_PNG84499.png" />
-            </image>
-         </ImageView>
+            <TextField fx:id="idkey" layoutX="56.0" layoutY="205.0" onAction="#idkey" prefHeight="51.0" prefWidth="607.0" style="-fx-background-color: #B38867; -fx-background-radius: 50;">
+                <font>
+                    <Font name="Segoe UI Italic" size="22.0" />
+                </font>
+            </TextField>
+            <Label layoutX="55.0" layoutY="138.0" text="%idkeyLabel" textFill="#42313a">
+                <font>
+                    <Font name="Segoe UI Bold" size="34.0" />
+                </font>
+            </Label>
+            <ImageView fitHeight="681.0" fitWidth="374.0" layoutX="746.0" layoutY="201.0" pickOnBounds="true" preserveRatio="true">
+                <image>
+                    <Image url="@../GUI/Data/dragon_PNG84499.png" />
+                </image>
+            </ImageView>
         </children>
     </AnchorPane>
 </StackPane>

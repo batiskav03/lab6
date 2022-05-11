@@ -29,17 +29,17 @@
             <cursor>
                 <Cursor fx:constant="DEFAULT" />
             </cursor></TextField>
-        <Button fx:id="enterToSystem" layoutX="771.0" layoutY="754.0" mnemonicParsing="false" onAction="#enterToSystemDark" prefHeight="110.0" prefWidth="378.0" style="-fx-background-color: #DDBC95; -fx-background-radius: 2300;" text="Enter" textFill="#20232a">
+        <Button fx:id="enterToSystem" layoutX="771.0" layoutY="754.0" mnemonicParsing="false" onAction="#enterToSystemDark" prefHeight="110.0" prefWidth="378.0" style="-fx-background-color: #DDBC95; -fx-background-radius: 2300;" text="%enterButton" textFill="#20232a">
             <font>
                 <Font name="Segoe UI Black" size="48.0" />
             </font>
         </Button>
-        <Button fx:id="backButton" layoutX="67.0" layoutY="55.0" mnemonicParsing="false" onAction="#backDark" prefHeight="72.0" prefWidth="142.0" style="-fx-background-color: #7C6F6B; -fx-background-radius: 32;" text="back" textFill="#20232a">
+        <Button fx:id="backButton" layoutX="67.0" layoutY="55.0" mnemonicParsing="false" onAction="#backDark" prefHeight="72.0" prefWidth="142.0" style="-fx-background-color: #7C6F6B; -fx-background-radius: 32;" text="%backButton" textFill="#20232a">
             <font>
                 <Font name="Segoe UI Black" size="24.0" />
             </font>
         </Button>
-        <Label layoutX="668.0" layoutY="172.0" prefHeight="124.0" prefWidth="584.0" text="Authorization" textFill="#ddbc95">
+        <Label layoutX="668.0" layoutY="172.0" prefHeight="124.0" prefWidth="584.0" text="%authorizeLabel" textFill="#ddbc95">
             <font>
                 <Font name="Segoe UI Black Italic" size="85.0" />
             </font>
