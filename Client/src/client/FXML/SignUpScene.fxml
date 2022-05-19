@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<StackPane fx:id="parentContainer" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.ClientAuthorization">
+<StackPane fx:id="parentContainer" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.ClientAuthorization">
     <AnchorPane prefHeight="1080.0" prefWidth="1920.0" style="-fx-background-color: #EED8C9;">
         <PasswordField fx:id="signupPassword" layoutX="770.0" layoutY="528.0" prefHeight="51.0" prefWidth="380.0" promptText="Password" style="-fx-background-color: #B38867; -fx-background-radius: 20;">
             <font>

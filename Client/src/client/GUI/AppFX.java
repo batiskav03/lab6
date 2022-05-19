@@ -20,7 +20,7 @@ public class AppFX extends Application {
     public static void main(String[] args) {
         String uriString = new File("Client/src/client/GUI/Data/song.wav").toURI().toString();
         MediaPlayer player = new MediaPlayer( new Media(uriString));
-//        player.play();
+        player.play();
         Application.launch();
     }
     @Override
@@ -40,8 +40,5 @@ public class AppFX extends Application {
         stage.getIcons().add(image);
         stage.setTitle("USSR");
         stage.show();
-
     }
-
-
 }

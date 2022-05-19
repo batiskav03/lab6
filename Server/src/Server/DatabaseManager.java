@@ -1,15 +1,18 @@
 package Server;
 
-import data.Dragon;
+import data.*;
+
+import java.util.Date;
 
 import java.sql.*;
 import java.util.HashMap;
+import java.util.LinkedList;
 
 public class DatabaseManager {
 
-    private static String PASSWORD = "****";
-    private static String USER = "postgres";
-    private static String URL = "jdbc:postgresql://localhost:5432/postgres";
+    private static String PASSWORD = "knz865";
+    private static String USER = "s338956";
+    private static String URL = "jdbc:postgresql://localhost:2288/studs";
 
 
     public static boolean addDragonToDatabase(Integer key, Dragon dragon) {
@@ -94,7 +97,8 @@ public class DatabaseManager {
         }
         return true;
     }
-    public static HashMap<String, String> getFromDatabase(){
+
+    public static HashMap<String, String> getFromDatabase() {
         HashMap<String, String> users1 = new HashMap<>();
         try {
             Class.forName("org.postgresql.Driver");
@@ -111,5 +115,33 @@ public class DatabaseManager {
         return users1;
     }
 
-
+    public static LinkedList<Dragon> getFromDatabaseDragons() {
+        LinkedList<Dragon> dragon = new LinkedList<Dragon>();
+        try {
+            Class.forName("org.postgresql.Driver");
+            Connection c = DriverManager.getConnection(URL, USER, PASSWORD);
+            c.setAutoCommit(false);
+            PreparedStatement sql = c.prepareStatement("SELECT * FROM dragons");
+            ResultSet rs = sql.executeQuery();
+            while (rs.next()) {
+                Coordinates coordinates = new Coordinates(Long.parseLong(rs.getString(4)),
+                        Float.parseFloat(rs.getString(5)));
+                DragonHead dragonHead = new DragonHead(Long.parseLong(rs.getString(11)),
+                        Float.parseFloat(rs.getString(12)));
+                Date date = new Date();
+                dragon.add(new Dragon(rs.getString(13),
+                        rs.getString(3),
+                        coordinates,
+                        date,
+                        Integer.parseInt(rs.getString(7)),
+                        Color.valueOf(rs.getString(8)),
+                        DragonType.valueOf(rs.getString(9)) ,
+                        DragonCharacter.valueOf(rs.getString(10)) ,
+                        dragonHead));
+            }
+        } catch (SQLException | ClassNotFoundException throwables) {
+            throwables.printStackTrace();
+        }
+        return dragon;
+    }
 }

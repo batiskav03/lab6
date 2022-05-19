@@ -12,19 +12,22 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Background;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import java.io.File;
 import java.io.IOException;
-import java.util.Date;
-import java.util.Locale;
-import java.util.ResourceBundle;
-import java.util.Scanner;
+import java.util.*;
 
+import static Server.DatabaseManager.getFromDatabaseDragons;
 import static client.ClientAuthorization.ClientLogin;
 import static client.GUI.AppFX.languageResource;
+import static client.commands.Show.getDragonList;
 
 public class SenderManager {
 
@@ -346,6 +349,8 @@ public class SenderManager {
     public void idkey() {
     }
 
+
+
     @FXML
     private void handleButtonAction(ActionEvent actionEvent) {
         Object source = actionEvent.getSource();
@@ -357,6 +362,55 @@ public class SenderManager {
         } else if (showButton.equals(source)) {
             Show show = new Show();
             printer(show);
+
+            Stage stage = new Stage();
+            stage.setWidth(1920);
+            stage.setHeight(1080);
+            AnchorPane anchorRoot = new AnchorPane();
+
+            LinkedList<Dragon> dragons = getFromDatabaseDragons();
+
+            for (Dragon dragon : dragons) {
+                Button btn = new Button();
+                int x = Math.round(dragon.getX());
+
+                int y = Math.round(dragon.getY());
+
+                StackPane stackPane = new StackPane();
+
+                stackPane.setLayoutX(x);
+                stackPane.setLayoutY(y);
+                stackPane.getChildren().add(btn);
+
+                if (dragon.getOwner().equals(ClientLogin())){
+                    Image image = new Image(new File("GUI/Data/Dragon-PNG-HD.png").toURI().toString());
+                    ImageView imageview = new ImageView(image);
+                    imageview.setPreserveRatio(true);
+                    imageview.setPickOnBounds(true);
+                    imageview.setFitHeight(122);
+                    imageview.setFitWidth(250);
+                    imageview.setLayoutX(x);
+                    imageview.setLayoutY(y);
+                    stackPane.getChildren().add(imageview);
+                } else {
+
+                    Image image = new Image(new File("GUI/Data/Dragon-PNG-Photo.png").toURI().toString());
+                    ImageView imageview = new ImageView(image);
+                    imageview.setPreserveRatio(true);
+                    imageview.setPickOnBounds(true);
+                    imageview.setFitHeight(122);
+                    imageview.setFitWidth(250);
+                    imageview.setLayoutX(x+1);
+                    imageview.setLayoutY(y+1);
+                    stackPane.getChildren().add(imageview);
+                }
+
+                anchorRoot.getChildren().add(stackPane);
+
+            }
+            stage.setScene(new Scene(anchorRoot,1000,500));
+            stage.show();
+            System.out.println("дошла");
             showLandscape();
         } else if (helpButton.equals(source)) {
             Help help = new Help();
@@ -623,5 +677,13 @@ public class SenderManager {
         languageResource = ResourceBundle.getBundle("client.resources.resources", Locale.getDefault());
         slide(exitButton,"FXML_Dark/InteractiveMod_dark.fxml");
 
+    }
+    public void parser(String ans){
+        ArrayList<String> str = new ArrayList<String>(Arrays.asList(ans.split("\n")));
+        for (String s:str){
+            if (s.contains("owner=" + ClientLogin())){
+
+            }
+        }
     }
 }
