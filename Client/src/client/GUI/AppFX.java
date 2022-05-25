@@ -25,7 +25,7 @@ public class AppFX extends Application {
     }
     @Override
     public void start(Stage stage) throws IOException{
-        Locale.setDefault(Locale.FRANCE);
+        Locale.setDefault(Locale.ENGLISH);
         languageResource = ResourceBundle.getBundle("client.resources.resources", Locale.getDefault());
 
         InputStream iconStream = getClass().getResourceAsStream("Data/img.png");

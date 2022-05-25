@@ -32,6 +32,18 @@ public class Dragon implements Comparable<Dragon>, Serializable {
         this.character = character;
         this.head = head;
     }
+    public Dragon(Integer id, String owner,String name, Coordinates coordinates, Date creationDate, Integer age, Color color, DragonType type, DragonCharacter character, DragonHead head) {
+        this.owner = owner;
+        this.id = id;
+        this.name = name;
+        this.coordinates = coordinates;
+        this.creationDate = creationDate;
+        this.age = age;
+        this.color = color;
+        this.type = type;
+        this.character = character;
+        this.head = head;
+    }
 
     @Override
     public String toString() {
@@ -92,9 +104,18 @@ public class Dragon implements Comparable<Dragon>, Serializable {
     public String getType() {
         return type.toString();
     }
+    public DragonType getDragonType() {
+        return type;
+    }
+    public DragonHead getDragonHead() {
+        return head;
+    }
 
     public String getCharacter() {
         return character.toString();
+    }
+    public DragonCharacter getDragonCharacter() {
+        return character;
     }
 
     public long getEyes() {
@@ -102,5 +123,17 @@ public class Dragon implements Comparable<Dragon>, Serializable {
     }
     public float getTooth() {
         return head.getToothCount();
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Coordinates getCoordinates() {
+        return coordinates;
+    }
+
+    public DragonHead getHead() {
+        return head;
     }
 }

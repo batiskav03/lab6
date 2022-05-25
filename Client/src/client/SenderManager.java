@@ -12,17 +12,16 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.io.IOException;
-import java.util.Date;
-import java.util.Locale;
-import java.util.ResourceBundle;
-import java.util.Scanner;
+import java.util.*;
 
+import static Server.DatabaseManager.getFromDatabaseDragons;
 import static client.ClientAuthorization.ClientLogin;
 import static client.GUI.AppFX.languageResource;
 
@@ -187,7 +186,7 @@ public class SenderManager {
 
         Timeline timeline = new Timeline();
         KeyValue kv = new KeyValue(root.translateYProperty(), 0, Interpolator.EASE_IN);
-        KeyFrame kf = new KeyFrame(Duration.seconds(1), kv);
+        KeyFrame kf = new KeyFrame(Duration.seconds(0.5), kv);
         timeline.getKeyFrames().add(kf);
         timeline.setOnFinished(t -> {
             parentContainer.getChildren().remove(anchorRoot);
@@ -357,7 +356,225 @@ public class SenderManager {
         } else if (showButton.equals(source)) {
             Show show = new Show();
             printer(show);
-            showLandscape();
+
+            Stage stage = new Stage();
+            stage.setWidth(1920);
+            stage.setHeight(1080);
+            AnchorPane anchorRoot = new AnchorPane();
+
+            LinkedList<Dragon> dragons = getFromDatabaseDragons();
+
+            for (Dragon dragon : dragons) {
+                int x = Math.round(dragon.getX());
+                int y = Math.round(dragon.getY());
+                StackPane stackPane = new StackPane();
+                boolean isOwner = dragon.getOwner().equals(ClientLogin());
+                if (isOwner) {
+                    ImageView imageview = new ImageView(getClass().getResource("GUI/Data/Dragon-PNG-Photo.png").toExternalForm());
+                    imageview.setPreserveRatio(true);
+                    imageview.setPickOnBounds(true);
+                    imageview.setFitHeight(50);
+                    imageview.setFitWidth(60);
+                    imageview.setLayoutX(960+x);
+                    imageview.setLayoutY(540+y);
+                    stackPane.getChildren().add(imageview);
+                } else {
+                    ImageView imageview = new ImageView(getClass().getResource("GUI/Data/dragon_PNG994.png").toExternalForm());
+                    imageview.setPreserveRatio(true);
+                    imageview.setPickOnBounds(true);
+                    imageview.setFitHeight(50);
+                    imageview.setFitWidth(60);
+                    imageview.setLayoutX(960+x);
+                    imageview.setLayoutY(540+y);
+                    stackPane.getChildren().add(imageview);
+                }
+                Alert info = new Alert(Alert.AlertType.INFORMATION, dragon.toString());
+                ButtonType OKbutton = new ButtonType("OK", ButtonBar.ButtonData.CANCEL_CLOSE);
+                if(isOwner) {
+                    ButtonType editButton = new ButtonType("Edit");
+                    info.getButtonTypes().setAll(OKbutton,editButton);
+                    info.setOnCloseRequest(action -> {
+                        ButtonType result = info.getResult();
+                        if (result != null && result == editButton) {
+                            info.hide();
+                            Alert prefer = new Alert(Alert.AlertType.INFORMATION);
+                            ButtonType changeNameButton = new ButtonType("change name");
+                            ButtonType changeAgeButton = new ButtonType("change age");
+                            ButtonType changeColorButton = new ButtonType("change color");
+                            ButtonType changeDragonTypeButton = new ButtonType("change dragon type");
+                            ButtonType changeDragonCharacterButton = new ButtonType("change dragon character");
+                            prefer.getButtonTypes().setAll(changeNameButton,changeAgeButton,changeColorButton,changeDragonTypeButton,changeDragonCharacterButton);
+                            prefer.setOnCloseRequest(actionInPrefer -> {
+                                ButtonType preferResult = prefer.getResult();
+                                if (preferResult != null && preferResult == changeNameButton) {
+                                    TextInputDialog nameDialog = new TextInputDialog("walter white");
+                                    nameDialog.setOnCloseRequest(actionName -> {
+                                        UpdateID updateid = new UpdateID();
+                                        updateid.setId(dragon.getId());
+                                        System.out.println(dragon.getId());
+                                        updateid.setDragon(new Dragon(dragon.getId(),dragon.getOwner(), nameDialog.getResult(),
+                                                dragon.getCoordinates(),
+                                                new Date(), dragon.getAge(), dragon.getColor(),
+                                                dragon.getDragonType(), dragon.getDragonCharacter(), dragon.getDragonHead()));
+                                        String ans = sender.Sender(updateid);
+                                        Alert upd = new Alert(Alert.AlertType.INFORMATION, ans, ButtonType.OK);
+                                        upd.show();
+                                    });
+                                    nameDialog.show();
+                                } else if (preferResult != null && preferResult == changeAgeButton) {
+                                    TextInputDialog ageDialog = new TextInputDialog("walter white");
+                                    ageDialog.setOnCloseRequest(actionAge -> {
+                                        UpdateID updateid = new UpdateID();
+                                        updateid.setId(dragon.getId());
+                                        System.out.println(dragon.getId());
+                                        updateid.setDragon(new Dragon(dragon.getId(),dragon.getOwner(), dragon.getName(),
+                                                dragon.getCoordinates(),
+                                                new Date(), Integer.valueOf(ageDialog.getResult()), dragon.getColor(),
+                                                dragon.getDragonType(), dragon.getDragonCharacter(), dragon.getDragonHead()));
+                                        String ans = sender.Sender(updateid);
+                                        Alert upd = new Alert(Alert.AlertType.INFORMATION, ans, ButtonType.OK);
+                                        upd.show();
+                                    });
+                                    ageDialog.show();
+                                } else if (preferResult != null && preferResult == changeColorButton) {
+                                    System.out.println(dragon.getId());
+                                    Alert color = new Alert(Alert.AlertType.INFORMATION);
+                                    ButtonType blueColor = new ButtonType("blue");
+                                    ButtonType yellowColor = new ButtonType("yellow");
+                                    ButtonType blackColor = new ButtonType("black");
+                                    color.getButtonTypes().setAll(blueColor,yellowColor,blackColor);
+                                    prefer.setOnCloseRequest(actionColor -> {
+                                        ButtonType colorResult = color.getResult();
+                                        if (colorResult != null && colorResult == blueColor) {
+                                            UpdateID updateid = new UpdateID();
+                                            updateid.setId(dragon.getId());
+                                            System.out.println(dragon.getId());
+                                            updateid.setDragon(new Dragon(dragon.getId(),dragon.getOwner(), dragon.getName(),
+                                                    dragon.getCoordinates(),
+                                                    new Date(), dragon.getAge(), Color.BLUE,
+                                                    dragon.getDragonType(), dragon.getDragonCharacter(), dragon.getDragonHead()));
+                                            String ans = sender.Sender(updateid);
+                                            Alert upd = new Alert(Alert.AlertType.INFORMATION, ans, ButtonType.OK);
+                                            upd.show();
+                                        } else if (colorResult != null && colorResult == yellowColor) {
+                                            UpdateID updateid = new UpdateID();
+                                            updateid.setId(dragon.getId());
+                                            System.out.println(dragon.getId());
+                                            updateid.setDragon(new Dragon(dragon.getId(),dragon.getOwner(), dragon.getName(),
+                                                    dragon.getCoordinates(),
+                                                    new Date(), dragon.getAge(), Color.YELLOW,
+                                                    dragon.getDragonType(), dragon.getDragonCharacter(), dragon.getDragonHead()));
+                                            String ans = sender.Sender(updateid);
+                                            Alert upd = new Alert(Alert.AlertType.INFORMATION, ans, ButtonType.OK);
+                                            upd.show();
+                                        }else if (colorResult != null && colorResult == blackColor) {
+                                            UpdateID updateid = new UpdateID();
+                                            updateid.setId(dragon.getId());
+                                            System.out.println(dragon.getId());
+                                            updateid.setDragon(new Dragon(dragon.getId(),dragon.getOwner(), dragon.getName(),
+                                                    dragon.getCoordinates(),
+                                                    new Date(), dragon.getAge(), Color.BLACK,
+                                                    dragon.getDragonType(), dragon.getDragonCharacter(), dragon.getDragonHead()));
+                                            String ans = sender.Sender(updateid);
+                                            Alert upd = new Alert(Alert.AlertType.INFORMATION, ans, ButtonType.OK);
+                                            upd.show();
+                                        } else {
+                                            color.hide();
+                                        }
+
+                                    });
+                                    color.show();
+                                    
+                                } else if (preferResult != null && preferResult == changeDragonTypeButton) {
+                                    Alert type = new Alert(Alert.AlertType.INFORMATION);
+                                    ButtonType water = new ButtonType("water");
+                                    ButtonType und = new ButtonType("underground");
+                                    ButtonType air = new ButtonType("air");
+                                    ButtonType fire = new ButtonType("fire");
+                                    type.getButtonTypes().setAll(water,und,air,fire);
+                                    prefer.setOnCloseRequest(actionType -> {
+                                        DragonType types = null;
+                                        ButtonType typeResult = type.getResult();
+                                        if (typeResult != null && typeResult == water) {
+                                            types = DragonType.WATER;
+                                        } else if (typeResult != null && typeResult == und) {
+                                            types = DragonType.UNDERGROUND;
+                                        }else if (typeResult != null && typeResult == air) {
+                                            types = DragonType.AIR;
+                                        } else  if (typeResult != null && typeResult == fire){
+                                            types = DragonType.FIRE;
+                                        }
+                                        UpdateID updateid = new UpdateID();
+                                        updateid.setId(dragon.getId());
+                                        System.out.println(dragon.getId());
+                                        updateid.setDragon(new Dragon(dragon.getId(),dragon.getOwner(), dragon.getName(),
+                                                dragon.getCoordinates(),
+                                                new Date(), dragon.getAge(), dragon.getColor(),
+                                                types, dragon.getDragonCharacter(), dragon.getDragonHead()));
+                                        String ans = sender.Sender(updateid);
+                                        Alert upd = new Alert(Alert.AlertType.INFORMATION, ans, ButtonType.OK);
+                                        upd.show();
+                                    });
+                                    type.show();
+                                } else if (preferResult != null && preferResult == changeDragonCharacterButton) {
+                                    Alert character = new Alert(Alert.AlertType.INFORMATION);
+                                    ButtonType wise = new ButtonType("wise");
+                                    ButtonType good = new ButtonType("good");
+                                    ButtonType evil = new ButtonType("evil");
+
+                                    character.getButtonTypes().setAll(wise,good,evil);
+                                    prefer.setOnCloseRequest(actionChar -> {
+                                        DragonCharacter chr = null;
+                                        ButtonType characterResult = character.getResult();
+                                        if (characterResult != null && characterResult == wise) {
+                                            chr = DragonCharacter.WISE;
+                                        } else if (characterResult != null && characterResult == good) {
+                                            chr = DragonCharacter.GOOD;
+                                        }else if (characterResult != null && characterResult == evil) {
+                                            chr = DragonCharacter.EVIL;
+                                        }
+                                        UpdateID updateid = new UpdateID();
+                                        updateid.setId(dragon.getId());
+                                        System.out.println(dragon.getId());
+                                        updateid.setDragon(new Dragon(dragon.getId(),dragon.getOwner(), dragon.getName(),
+                                                dragon.getCoordinates(),
+                                                new Date(), dragon.getAge(), dragon.getColor(),
+                                                dragon.getDragonType(), chr, dragon.getDragonHead()));
+                                        String ans = sender.Sender(updateid);
+                                        Alert upd = new Alert(Alert.AlertType.INFORMATION, ans, ButtonType.OK);
+                                        upd.show();
+                                    });
+                                    character.show();
+                                } else {
+                                    prefer.hide();
+                                }
+                            });
+                            prefer.show();
+                        } else {
+                            info.hide();
+                        }
+                    });
+
+                }
+
+
+                Button btn = new Button();
+                btn.setOpacity(0);
+                btn.setOnAction((action) -> {
+                    info.show();
+                });
+
+                stackPane.setLayoutX(960+x);
+                stackPane.setLayoutY(540+y);
+                stackPane.getChildren().add(btn);
+
+                anchorRoot.getChildren().add(stackPane);
+
+            }
+            stage.setScene(new Scene(anchorRoot,1000,500));
+            stage.show();
+            System.out.println("дошла");
+
         } else if (helpButton.equals(source)) {
             Help help = new Help();
             printer(help);
@@ -386,66 +603,6 @@ public class SenderManager {
 
 
     }
-    @FXML
-    public void dragon1() {
-
-        Alert wrong = new Alert(Alert.AlertType.WARNING, "owner=1, id=1646889798, name='60chlen'," +
-                " coordinates={x = -333, y = 261.0}, creationDate=Wed May 11 00:46:37 MSK 2022, age=123, color=BLACK, " +
-                "type=UNDERGROUND, character=EVIL, head={eyes = 123, tooth = 123.0} ", ButtonType.OK);
-        wrong.showAndWait();
-        if (wrong.getResult() == ButtonType.OK) {
-            wrong.hide();
-        }
-    }
-
-    @FXML
-    public void dragon2() {
-
-        Alert wrong = new Alert(Alert.AlertType.WARNING, "{owner=1, id=1566194770, name='1', " +
-                "coordinates={x = 123, y = 123.0}, creationDate=Wed May 11 03:28:43 MSK 2022, age=1, color=BLACK, " +
-                "type=UNDERGROUND, character=WISE, head={eyes = 123, tooth = 123.0}} ", ButtonType.OK);
-        wrong.showAndWait();
-        if (wrong.getResult() == ButtonType.OK) {
-            wrong.hide();
-        }
-    }
-
-    public void dragon3() {
-
-        Alert wrong = new Alert(Alert.AlertType.INFORMATION, "owner=alever, id=123321231, name='Larymar'," +
-                " coordinates={x = 200, y = -100.0}, creationDate=Wed May 11 11:46:37 MSK 2022, age=18, color=BLACK, " +
-                "type=UNDERGROUND, character=EVIL, head={eyes = 100, tooth = 100} ", ButtonType.OK);
-        wrong.showAndWait();
-        if (wrong.getResult() == ButtonType.OK) {
-            wrong.hide();
-        }
-    }
-
-    public void dragon4() {
-
-        Alert wrong = new Alert(Alert.AlertType.WARNING, "owner=maxxxxx, id=103441123, name='name'," +
-                " coordinates={x = 600, y = 111.0}, creationDate=Wed May 11 00:40:37 MSK 2022, age=69, color=BLACK, " +
-                "type=UNDERGROUND, character=EVIL, head={eyes = 0, tooth = 0.0} ", ButtonType.OK);
-        wrong.showAndWait();
-        if (wrong.getResult() == ButtonType.OK) {
-            wrong.hide();
-        }
-    }
-
-
-    private void showLandscape() {
-        Parent root = null;
-        try {
-            root = FXMLLoader.load(getClass().getResource("FXML/landscape.fxml"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        Scene scene = new Scene(root);
-        Stage stage = new Stage();
-        stage.setFullScreen(true);
-        stage.setScene(scene);
-        stage.show();
-    }
 
     @FXML
     private void handleButtonActionDark(ActionEvent actionEvent) {
@@ -458,7 +615,7 @@ public class SenderManager {
         } else if (showButton.equals(source)) {
             Show show = new Show();
             printer(show);
-            showLandscape();
+
         } else if (helpButton.equals(source)) {
             Help help = new Help();
             printer(help);

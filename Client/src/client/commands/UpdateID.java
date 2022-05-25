@@ -27,10 +27,10 @@ public class UpdateID extends AbstractCommand {
                 isT = true;
                 if (entry.getValue().getOwner().equals(getOwnerClient())) {
                     System.out.println("Update element:");
-                    boolean statusDB = DatabaseManager.addDragonToDatabase(entry.getKey(),a);
+                    boolean statusDB = DatabaseManager.updDragonInDatabase(a);
                     isYour = true;
                     if (statusDB) {
-                        dragonsCollection.put(id, a);
+                        dragonsCollection.put(entry.getKey(), a);
                     } else {
                         return "Произошла ошибка в базе данных, попробуйте позже.";
                     }
